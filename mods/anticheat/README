@@ -1,0 +1,37 @@
+-- ANTI CHEAT by rnd
+-- Copyright 2016 rnd
+-- includes spectator mod by jp, modified/bugfixed by rnd
+
+-------------------------------------------------------------------------
+-- This program is free software: you can redistribute it and/or modify
+-- it under the terms of the GNU General Public License as published by
+-- the Free Software Foundation, either version 3 of the License, or
+-- (at your option) any later version.
+
+-- This program is distributed in the hope that it will be useful,
+-- but WITHOUT ANY WARRANTY; without even the implied warranty of
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-- GNU General Public License for more details.
+
+-- You should have received a copy of the GNU General Public License
+-- along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-------------------------------------------------------------------------
+
+features:
+
+0. what it does:
+	- succesffuly detect noclip/fly. Its just a matter of time when someone noclipping/flying is detected.
+	- players cant know when they are being watch since intervals are randomized
+	- lag resistant (see CHECK_AGAIN in settings)
+
+1. moderators can:
+	-see full reports with coordinates of location as cheats occur
+	-use /cstats to see latest detected cheater
+	-use /cdebug to see even suspected cheats to be verified later
+	-use /watch NAME to spectate suspect/detected cheater, /unwatch to return to normal
+
+managing moderators:
+	-edit names inside anticheatsettings.moderators in settings.lua
+	-Any player with kick privileges is moderator and is additionaly ignored by cheat checks. Use this for admin only - cheaters can then see who moderators are.
+	
+2. this mod works well with basic_vote mod. After cheater has been positively detected anyone can use /vote to kick, remove interact or kill cheater. Vote in this case is cast anonymously, under the name #anticheat.
