@@ -6,6 +6,7 @@ local season =  tonumber(minetest.setting_getbool("season_set")) --or 2
 
 dofile(minetest.get_modpath("mt_seasons").."/autumn.lua")
 dofile(minetest.get_modpath("mt_seasons").."/nodes.lua")
+--dofile(minetest.get_modpath("mt_seasons").."/mapgen.lua")  --makes all stone world
 
 --[[
 if minetest.setting_getbool("season_set")  == 1 then

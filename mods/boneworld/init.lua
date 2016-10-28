@@ -270,8 +270,8 @@ function minetest.is_protected(pos, name)
 		local player = minetest.get_player_by_name(name); if not player then return true end
 		--if pos.y<-maxdepth-5 then player:setpos({x=0,y=1,z=0}) end
 		if pos.y<-maxdepth-5 then
-		--minetest.chat_send_all("Player "..name.." Dug way too deep! Sending them to spawn!")
-		--player:setpos({x=0,y=10,z=0}) 
+		minetest.chat_send_all("Player "..name.." Dug way too deep! Sending them to spawn!")
+		player:setpos({x=0,y=10,z=0}) 
 		end
 		return true
 	end

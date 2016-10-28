@@ -366,7 +366,7 @@ function doors.register(name, def)
 		minetest.remove_node({x = pos.x, y = pos.y + 1, z = pos.z})
 		nodeupdate({x = pos.x, y = pos.y + 1, z = pos.z})
 	end
-	def.on_rotate = screwdriver and screwdriver.rotate_simple or false
+	def.on_rotate = false
 
 	if def.protected then
 		def.can_dig = can_dig_door
@@ -422,7 +422,7 @@ doors.register("door_steel", {
 		inventory_image = "doors_item_steel.png",
 		protected = true,
 		groups = {cracky = 1, level = 2},
-		sounds = default.node_sound_stone_defaults(),
+		sounds = default.node_sound_metal_defaults(),
 		sound_open = "doors_steel_door_open",
 		sound_close = "doors_steel_door_close",
 		recipe = {
@@ -431,7 +431,7 @@ doors.register("door_steel", {
 			{"default:steel_ingot", "default:steel_ingot"},
 		}
 })
---[[
+
 doors.register("door_glass", {
 		tiles = {"doors_door_glass.png"},
 		description = "Glass Door",
@@ -461,7 +461,7 @@ doors.register("door_obsidian_glass", {
 			{"default:obsidian_glass", "default:obsidian_glass"},
 		},
 })
-]]
+
 -- Capture mods using the old API as best as possible.
 function doors.register_door(name, def)
 	if def.only_placer_can_open then
@@ -621,7 +621,7 @@ doors.register_trapdoor("doors:trapdoor_steel", {
 	tile_front = "doors_trapdoor_steel.png",
 	tile_side = "doors_trapdoor_steel_side.png",
 	protected = true,
-	sounds = default.node_sound_stone_defaults(),
+	sounds = default.node_sound_metal_defaults(),
 	sound_open = "doors_steel_door_open",
 	sound_close = "doors_steel_door_close",
 	groups = {cracky = 1, level = 2, door = 1},
@@ -696,7 +696,7 @@ function doors.register_fencegate(name, def)
 	fence_open.collision_box = {
 		type = "fixed",
 		fixed = {{-1/2, -1/2, -1/4, -3/8, 1/2, 1/4},
-			{-5/8, -3/8, -1/2, -3/8, 3/8, 0}},
+			{-1/2, -3/8, -1/2, -3/8, 3/8, 0}},
 	}
 
 	minetest.register_node(":" .. name .. "_closed", fence_closed)
@@ -717,21 +717,21 @@ doors.register_fencegate("doors:gate_wood", {
 	material = "default:wood",
 	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2}
 })
---[[
+
 doors.register_fencegate("doors:gate_acacia_wood", {
 	description = "Acacia Fence Gate",
 	texture = "default_acacia_wood.png",
 	material = "default:acacia_wood",
 	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2}
 })
-]]
+
 doors.register_fencegate("doors:gate_junglewood", {
 	description = "Junglewood Fence Gate",
 	texture = "default_junglewood.png",
 	material = "default:junglewood",
 	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2}
 })
---[[
+
 doors.register_fencegate("doors:gate_pine_wood", {
 	description = "Pine Fence Gate",
 	texture = "default_pine_wood.png",
@@ -745,4 +745,3 @@ doors.register_fencegate("doors:gate_aspen_wood", {
 	material = "default:aspen_wood",
 	groups = {choppy = 3, oddly_breakable_by_hand = 2, flammable = 3}
 })
-]]

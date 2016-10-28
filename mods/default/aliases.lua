@@ -75,36 +75,3 @@ minetest.register_alias("default:pinewood", "default:pine_wood")
 
 minetest.register_alias("default:ladder", "default:ladder_wood")
 minetest.register_alias("default:sign_wall", "default:sign_wall_wood")
-
-
-minetest.register_alias("default:hd_stonebrick", "air")
-minetest.register_alias("spidermob:meat", "default:meat")
-minetest.register_alias("spidermob:meat_raw", "default:meat_raw")
-
-
-minetest.register_alias("default:meat_raw", "mobs:meat_raw")
-minetest.register_alias("default:meat", "mobs:meat")
-
-
-
-
-
---[[
-minetest.register_alias("default:pumpkin", "mt_seasons:pumpkin")
-minetest.register_alias("default:pumpkin_1", "mt_seasons:pumpkin_1")
-minetest.register_alias("default:pumpkin_2", "mt_seasons:pumpkin_2")
-minetest.register_alias("default:pumpkin_3", "mt_seasons:pumpkin_3")
-minetest.register_alias("default:pumpkin_4", "mt_seasons:pumpkin_4")
-minetest.register_alias("default:pumpkin_5", "mt_seasons:pumpkin_5")
-minetest.register_alias("default:pumpkin_6", "mt_seasons:pumpkin_6")
-minetest.register_alias("default:pumpkin_7", "mt_seasons:pumpkin_7")
-minetest.register_alias("default:pumpkin_8", "mt_seasons:pumpkin_8")
-minetest.register_alias("default:pumpkin_slice", "mt_seasons:pumpkin_slice")
-minetest.register_alias("default:pumpkin_bread", "mt_seasons:pumpkin_bread")
-minetest.register_alias("default:pumpkin_dough", "mt_seasons:pumpkin_dough")
-minetest.register_alias("default:jackolantern", "mt_seasons:jackolantern")
-minetest.register_alias("default:jackolantern_on", "mt_seasons:jackolantern_on")
-]]
-
-
-

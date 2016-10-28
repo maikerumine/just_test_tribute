@@ -16,7 +16,6 @@ end
 
 -- Default player appearance
 default.player_register_model("character.b3d", {
---default.player_register_model("mobs_stone_monster.x", {
 	animation_speed = 30,
 	textures = {"character.png", },
 	animations = {
@@ -26,7 +25,6 @@ default.player_register_model("character.b3d", {
 		walk      = { x=168, y=187, },
 		mine      = { x=189, y=198, },
 		walk_mine = { x=200, y=219, },
-		-- Extra animations (not currently used by the game).
 		sit       = { x= 81, y=160, },
 	},
 })

@@ -1,6 +1,6 @@
 dofile(minetest.get_modpath("mobs").."/api.lua")
 dofile(minetest.get_modpath("mobs").."/crafting.lua")
---dofile(minetest.get_modpath("mobs").."/mapgen.lua")
+--dofile(minetest.get_modpath("mobs").."/mapgen.lua")  --all stone world if you like
 
 
 

@@ -32,6 +32,7 @@ minetest.register_tool("default:pick_wood", {
 		},
 		damage_groups = {fleshy=2},
 	},
+	groups = {flammable = 2},
 })
 minetest.register_tool("default:pick_stone", {
 	description = "Stone Pickaxe",
@@ -94,34 +95,6 @@ minetest.register_tool("default:pick_diamond", {
 	},
 })
 
-minetest.register_tool("default:pick_obsidian", {
-	description = "Obsidian Pickaxe",
-	inventory_image = "default_tool_obsidianpick.png",
-	tool_capabilities = {
-		full_punch_interval = 0.1,
-		max_drop_level=3,
-		groupcaps={
-			cracky = {times={[1]=0.3, [2]=0.2, [3]=0.05}, uses=3, maxlevel=3},
-		},
-		damage_groups = {fleshy=6},
-	},
-})
-
-minetest.register_tool("default:pick_admin", {
-	description = "Obsidian Pickaxe",
-	inventory_image = "default_tool_obsidianpick.png",
-	tool_capabilities = {
-		full_punch_interval = 0.1,
-		max_drop_level=3,
-		groupcaps={
-			cracky = {times={[1]=0.3, [2]=0.2, [3]=0.05}, uses=3000, maxlevel=3},
-			crumbly = {times={[1]=0.3, [2]=0.2, [3]=0.05}, uses=3000, maxlevel=3},
-			snappy = {times={[1]=0.3, [2]=0.2, [3]=0.05}, uses=3000, maxlevel=3},
-		},
-		damage_groups = {fleshy=60},
-	},
-})
-
 --
 -- Shovels
 --
@@ -138,6 +111,7 @@ minetest.register_tool("default:shovel_wood", {
 		},
 		damage_groups = {fleshy=2},
 	},
+	groups = {flammable = 2},
 })
 minetest.register_tool("default:shovel_stone", {
 	description = "Stone Shovel",
@@ -220,6 +194,7 @@ minetest.register_tool("default:axe_wood", {
 		},
 		damage_groups = {fleshy=2},
 	},
+	groups = {flammable = 2},
 })
 minetest.register_tool("default:axe_stone", {
 	description = "Stone Axe",
@@ -296,7 +271,8 @@ minetest.register_tool("default:sword_wood", {
 			snappy={times={[2]=1.6, [3]=0.40}, uses=10, maxlevel=1},
 		},
 		damage_groups = {fleshy=2},
-	}
+	},
+	groups = {flammable = 2},
 })
 minetest.register_tool("default:sword_stone", {
 	description = "Stone Sword",

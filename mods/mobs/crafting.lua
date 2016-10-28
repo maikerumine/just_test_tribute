@@ -105,3 +105,11 @@ minetest.register_craft({
 	output = "mobs:meat",
 	recipe = "mobs:meat_raw",
 })
+
+minetest.register_alias("default:hd_stonebrick", "air")
+minetest.register_alias("spidermob:meat", "default:meat")
+minetest.register_alias("spidermob:meat_raw", "default:meat_raw")
+
+
+minetest.register_alias("default:meat_raw", "mobs:meat_raw")
+minetest.register_alias("default:meat", "mobs:meat")

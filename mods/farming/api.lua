@@ -1,6 +1,8 @@
 
 -- Wear out hoes, place soil
 -- TODO Ignore group:flower
+farming.registered_plants = {}
+
 farming.hoe_on_use = function(itemstack, user, pointed_thing, uses)
 	local pt = pointed_thing
 	-- check if pointing at a node
@@ -90,7 +92,8 @@ farming.register_hoe = function(name, def)
 		inventory_image = def.inventory_image,
 		on_use = function(itemstack, user, pointed_thing)
 			return farming.hoe_on_use(itemstack, user, pointed_thing, def.max_uses)
-		end
+		end,
+		groups = def.groups,
 	})
 	-- Register its recipe
 	if def.material == nil then
@@ -263,9 +266,11 @@ farming.register_plant = function(name, def)
 		def.fertility = {}
 	end
 
+	farming.registered_plants[pname] = def
+
 	-- Register seed
 	local lbm_nodes = {mname .. ":seed_" .. pname}
-	local g = {seed = 1, snappy = 3, attached_node = 1}
+	local g = {seed = 1, snappy = 3, attached_node = 1, flammable = 2}
 	for k, v in pairs(def.fertility) do
 		g[v] = 1
 	end
@@ -303,6 +308,7 @@ farming.register_plant = function(name, def)
 	minetest.register_craftitem(":" .. mname .. ":" .. pname, {
 		description = pname:gsub("^%l", string.upper),
 		inventory_image = mname .. "_" .. pname .. ".png",
+		groups = {flammable = 2},
 	})
 
 	-- Register growing steps
