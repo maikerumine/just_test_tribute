@@ -37,8 +37,7 @@ end
 function default.grow_sapling(pos)
 	if not default.can_grow(pos) then
 		-- try a bit later again
-		--minetest.get_node_timer(pos):start(math.random(240, 600))
-		minetest.get_node_timer(pos):start(math.random(1, 4))
+		minetest.get_node_timer(pos):start(math.random(2, 6))
 		return
 	end
 

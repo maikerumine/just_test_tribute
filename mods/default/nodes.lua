@@ -527,7 +527,7 @@ minetest.register_node("default:sapling", {
 	on_construct = function(pos)
 		minetest.get_node_timer(pos):start(math.random(2400,4800))
 	end,
-
+--[[
 	on_place = function(itemstack, placer, pointed_thing)
 		itemstack = default.sapling_on_place(itemstack, placer, pointed_thing,
 			"default:sapling",
@@ -540,6 +540,7 @@ minetest.register_node("default:sapling", {
 
 		return itemstack
 	end,
+	]]
 })
 
 minetest.register_node("default:leaves", {
@@ -665,7 +666,7 @@ minetest.register_node("default:junglesapling", {
 	on_construct = function(pos)
 		minetest.get_node_timer(pos):start(math.random(2400,4800))
 	end,
-
+--[[
 	on_place = function(itemstack, placer, pointed_thing)
 		itemstack = default.sapling_on_place(itemstack, placer, pointed_thing,
 			"default:junglesapling",
@@ -678,6 +679,7 @@ minetest.register_node("default:junglesapling", {
 
 		return itemstack
 	end,
+	]]
 })
 
 
@@ -746,7 +748,7 @@ minetest.register_node("default:pine_sapling", {
 	on_construct = function(pos)
 		minetest.get_node_timer(pos):start(math.random(2400,4800))
 	end,
-
+--[[
 	on_place = function(itemstack, placer, pointed_thing)
 		itemstack = default.sapling_on_place(itemstack, placer, pointed_thing,
 			"default:pine_sapling",
@@ -759,6 +761,7 @@ minetest.register_node("default:pine_sapling", {
 
 		return itemstack
 	end,
+	]]
 })
 
 
@@ -827,7 +830,7 @@ minetest.register_node("default:acacia_sapling", {
 	on_construct = function(pos)
 		minetest.get_node_timer(pos):start(math.random(2400,4800))
 	end,
-
+--[[
 	on_place = function(itemstack, placer, pointed_thing)
 		itemstack = default.sapling_on_place(itemstack, placer, pointed_thing,
 			"default:acacia_sapling",
@@ -840,6 +843,7 @@ minetest.register_node("default:acacia_sapling", {
 
 		return itemstack
 	end,
+	]]
 })
 
 minetest.register_node("default:aspen_tree", {
@@ -907,7 +911,7 @@ minetest.register_node("default:aspen_sapling", {
 	on_construct = function(pos)
 		minetest.get_node_timer(pos):start(math.random(2400,4800))
 	end,
-
+--[[
 	on_place = function(itemstack, placer, pointed_thing)
 		itemstack = default.sapling_on_place(itemstack, placer, pointed_thing,
 			"default:aspen_sapling",
@@ -920,6 +924,7 @@ minetest.register_node("default:aspen_sapling", {
 
 		return itemstack
 	end,
+	]]
 })
 
 --
