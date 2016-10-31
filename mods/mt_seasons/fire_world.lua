@@ -1,8 +1,6 @@
 -- Minetest 0.4 mod: mt_seasons
 -- 
 -- See README.txt for licensing and other information.
-mt_seasons = {}
-
 
 
 
@@ -15,26 +13,79 @@ minetest.override_item("default:mese", {
 })
 ]]
 
---WINTER
+
+
+--FIRE AND LAVA
+minetest.override_item("default:stone", {
+	description = "Stone",
+	tiles = {"default_obsidian.png"},
+	groups = {cracky = 3, stone = 1},
+	drop = 'default:cobble',
+	legacy_mineral = true,
+	sounds = default.node_sound_stone_defaults(),
+})
+--[[
+minetest.override_item("default:cobble", {
+	description = "Cobblestone",
+	tiles = {"default_cobble.png^[colorize:purple:80"},
+	is_ground_content = false,
+	groups = {cracky = 3, stone = 2},
+	sounds = default.node_sound_stone_defaults(),
+})
+]]
+--[[
+minetest.override_item("default:mossycobble", {
+	description = "Mossy Cobblestone",
+	tiles = {"default_mossycobble.png^[colorize:purple:80"},
+	is_ground_content = false,
+	groups = {cracky = 3, stone = 2},
+	sounds = default.node_sound_stone_defaults(),
+})
+]]
+minetest.override_item("default:stonebrick", {
+	description = "Stone Brick",
+	paramtype2 = "facedir",
+	place_param2 = 0,
+	tiles = {"default_obsidian_block.png"},
+	is_ground_content = false,
+	groups = {cracky = 2, stone = 1},
+	sounds = default.node_sound_stone_defaults(),
+})
+
+minetest.override_item("default:glass", {
+	description = "Glass",
+	drawtype = "glasslike_framed_optional",
+	tiles = {"default_portal.png", "default_glass_detail.png"},
+	paramtype = "light",
+	sunlight_propagates = true,
+	is_ground_content = false,
+	groups = {cracky = 3, oddly_breakable_by_hand = 3},
+	sounds = default.node_sound_glass_defaults(),
+})
+
+minetest.override_item("default:dirt", {
+	description = "Dirt",
+	tiles = {"default_dirt.png^[colorize:black:80"},
+	groups = {crumbly = 3, soil = 1},
+	sounds = default.node_sound_dirt_defaults(),
+})
 
 minetest.override_item("default:dirt_with_grass", {
 	description = "Dirt with Grass",
-	tiles = {"default_snow.png", "default_dirt.png",
-		{name = "default_dirt.png^default_snow_side.png",
+	tiles = {"default_dry_grass.png^[colorize:black:180", "default_dirt.png",
+		{name = "default_dirt.png^default_dry_grass_side.png^[colorize:black:180",
 			tileable_vertical = false}},
 	groups = {crumbly = 3, soil = 1},
 	drop = 'default:dirt',
 	sounds = default.node_sound_dirt_defaults({
-		footstep = {name = "default_snow_footstep", gain = 0.15},
-		dug = {name = "default_snow_footstep", gain = 0.2},
-		dig = {name = "default_snow_footstep", gain = 0.2}
+		footstep = {name = "default_grass_footstep", gain = 0.25},
 	}),
 })
 
 minetest.override_item("default:dirt_with_dry_grass", {
 	description = "Dirt with Dry Grass",
-	tiles = {"default_snow.png", "default_dirt.png",
-		{name = "default_dirt.png^default_snow_side.png",
+	tiles = {"default_snow.png^[colorize:orange:80", "default_dirt.png",
+		{name = "default_dirt.png^default_snow_side.png^[colorize:orange:80",
 			tileable_vertical = false}},
 	groups = {crumbly = 3, soil = 1},
 	drop = 'default:dirt',
@@ -106,7 +157,7 @@ minetest.override_item("default:pine_needles",{
 	--drawtype = "allfaces_optional",
 	drawtype = "plantlike",
 	visual_scale = 1.3,
-	tiles = {"default_pine_needles.png^[colorize:white:80"},
+	tiles = {"default_pine_needles.png^[colorize:orange:80"},
 	waving = 1,
 	paramtype = "light",
 	is_ground_content = false,
@@ -129,7 +180,7 @@ minetest.override_item("default:acacia_leaves", {
 	--drawtype = "allfaces_optional",
 	drawtype = "plantlike",
 	visual_scale = 1.3,
-	tiles = {"default_dry_shrub.png^[colorize:white:180"},
+	tiles = {"default_dry_shrub.png^[colorize:orange:180"},
 	waving = 1,
 	paramtype = "light",
 	is_ground_content = false,
@@ -174,8 +225,8 @@ minetest.override_item("default:aspen_leaves", {
 
 minetest.override_item("default:cactus", {
 	description = "Cactus",
-	tiles = {"default_cactus_top.png^[colorize:white:80", "default_cactus_top.png^[colorize:white:80",
-		"default_cactus_side.png^[colorize:white:80"},
+	tiles = {"default_cactus_top.png^[colorize:black:200", "default_cactus_top.png^[colorize:black:200",
+		"default_cactus_side.png^[colorize:black:200"},
 	paramtype2 = "facedir",
 	groups = {snappy = 1, choppy = 3},
 	sounds = default.node_sound_wood_defaults(),
@@ -189,9 +240,9 @@ minetest.override_item("default:cactus", {
 minetest.override_item("default:papyrus", {
 	description = "Papyrus",
 	drawtype = "plantlike",
-	tiles = {"default_papyrus.png^[colorize:brown:120"},
-	inventory_image = "default_papyrus.png^[colorize:brown:120",
-	wield_image = "default_papyrus.png^[colorize:brown:120",
+	tiles = {"fertiliser_bone.png^[colorize:black:120"},
+	inventory_image = "fertiliser_bone.png^[colorize:black:120",
+	wield_image = "fertiliser_bone.png^[colorize:black:120",
 	paramtype = "light",
 	sunlight_propagates = true,
 	walkable = false,
@@ -212,10 +263,11 @@ minetest.override_item("default:junglegrass", {
 	drawtype = "plantlike",
 	waving = 1,
 	visual_scale = 1.3,
-	tiles = {"default_junglegrass.png^[colorize:white:180"},
-	inventory_image = "default_junglegrass.png^[colorize:white:180",
-	wield_image = "default_junglegrass.png^[colorize:white:180",
+	tiles = {"default_junglegrass.png^[colorize:red:180"},
+	inventory_image = "default_junglegrass.png^[colorize:red:180",
+	wield_image = "default_junglegrass.png^[colorize:red:180",
 	paramtype = "light",
+	light_source = default.LIGHT_MAX - 1,
 	sunlight_propagates = true,
 	walkable = false,
 	buildable_to = true,
@@ -232,10 +284,10 @@ minetest.override_item("default:grass_1", {
 	description = "Grass",
 	drawtype = "plantlike",
 	waving = 1,
-	tiles = {"default_grass_1.png^[colorize:white:80"},
+	tiles = {"default_grass_1.png^[colorize:red:80"},
 	-- Use texture of a taller grass stage in inventory
-	inventory_image = "default_grass_3.png^[colorize:white:80",
-	wield_image = "default_grass_3.png^[colorize:white:80",
+	inventory_image = "default_grass_3.png^[colorize:red:80",
+	wield_image = "default_grass_3.png^[colorize:red:80",
 	paramtype = "light",
 	sunlight_propagates = true,
 	walkable = false,
@@ -261,9 +313,9 @@ for i = 2, 5 do
 		description = "Grass",
 		drawtype = "plantlike",
 		waving = 1,
-		tiles = {"default_grass_" .. i .. ".png^[colorize:white:80"},
-		inventory_image = "default_grass_" .. i .. ".png^[colorize:white:80",
-		wield_image = "default_grass_" .. i .. ".png^[colorize:white:80",
+		tiles = {"default_grass_" .. i .. ".png^[colorize:red:80"},
+		inventory_image = "default_grass_" .. i .. ".png^[colorize:red:80",
+		wield_image = "default_grass_" .. i .. ".png^[colorize:red:80",
 		paramtype = "light",
 		sunlight_propagates = true,
 		walkable = false,
@@ -286,9 +338,9 @@ minetest.override_item("default:dry_grass_1", {
 	description = "Dry Grass",
 	drawtype = "plantlike",
 	waving = 1,
-	tiles = {"default_dry_grass_1.png^[colorize:white:180"},
-	inventory_image = "default_dry_grass_3.png^[colorize:white:180",
-	wield_image = "default_dry_grass_3.png^[colorize:white:180",
+	tiles = {"default_dry_grass_1.png^[colorize:red:180"},
+	inventory_image = "default_dry_grass_3.png^[colorize:red:180",
+	wield_image = "default_dry_grass_3.png^[colorize:red:180",
 	paramtype = "light",
 	sunlight_propagates = true,
 	walkable = false,
@@ -315,9 +367,9 @@ for i = 2, 5 do
 		description = "Dry Grass",
 		drawtype = "plantlike",
 		waving = 1,
-		tiles = {"default_dry_grass_" .. i .. ".png^[colorize:white:180"},
-		inventory_image = "default_dry_grass_" .. i .. ".png^[colorize:white:180",
-		wield_image = "default_dry_grass_" .. i .. ".png^[colorize:white:180",
+		tiles = {"default_dry_grass_" .. i .. ".png^[colorize:red:180"},
+		inventory_image = "default_dry_grass_" .. i .. ".png^[colorize:red:180",
+		wield_image = "default_dry_grass_" .. i .. ".png^[colorize:red:180",
 		paramtype = "light",
 		sunlight_propagates = true,
 		walkable = false,
@@ -398,9 +450,9 @@ local function add_simple_flower(name, desc, box, f_groups)
 		description = desc,
 		drawtype = "plantlike",
 		waving = 1,
-		tiles = {"flowers_" .. name .. ".png^[colorize:white:140"},
-		inventory_image = "flowers_" .. name .. ".png^[colorize:white:140",
-		wield_image = "flowers_" .. name .. ".png^[colorize:white:140",
+		tiles = {"flowers_" .. name .. ".png^[colorize:black:200"},
+		inventory_image = "flowers_" .. name .. ".png^[colorize:black:200",
+		wield_image = "flowers_" .. name .. ".png^[colorize:black:200",
 		sunlight_propagates = true,
 		paramtype = "light",
 		walkable = false,
@@ -421,12 +473,53 @@ flowers.datas = {
 	{"dandelion_yellow", "Yellow Dandelion", {-0.15, -0.5, -0.15, 0.15, 0.2, 0.15}, {color_yellow = 1, flammable = 1}},
 	{"geranium", "Blue Geranium", {-0.15, -0.5, -0.15, 0.15, 0.2, 0.15}, {color_blue = 1, flammable = 1}},
 	{"viola", "Viola", {-0.5, -0.5, -0.5, 0.5, -0.2, 0.5}, {color_violet = 1, flammable = 1}},
-	{"dandelion_white", "White dandelion", {-0.5, -0.5, -0.5, 0.5, -0.2, 0.5}, {color_white = 1, flammable = 1}}
+	{"dandelion_white", "white dandelion", {-0.5, -0.5, -0.5, 0.5, -0.2, 0.5}, {color_white = 1, flammable = 1}}
 }
 
 for _,item in pairs(flowers.datas) do
 	add_simple_flower(unpack(item))
 end
+
+
+
+
+minetest.override_item("default:chest_locked", {
+	tiles = {
+		"bones_top.png^[transform2^[colorize:purple:80",
+		"bones_bottom.png^[colorize:purple:80",
+		"bones_side.png^[colorize:purple:80",
+		"bones_side.png^[colorize:purple:80",
+		"bones_rear.png^[colorize:purple:80",
+		"bones_front.png^[colorize:purple:80"
+	},
+	light_source = default.LIGHT_MAX,
+})
+
+minetest.override_item("default:chest", {
+	tiles = {
+		"bones_top.png^[transform2^[colorize:purple:80",
+		"bones_bottom.png^[colorize:purple:80",
+		"bones_side.png^[colorize:purple:80",
+		"bones_side.png^[colorize:purple:80",
+		"bones_rear.png^[colorize:purple:80",
+		"bones_front.png^[colorize:purple:80"
+	},
+	light_source = default.LIGHT_MAX,
+})
+
+minetest.override_item("default:gravel", {
+	description = "Gravel",
+	tiles = {"default_gravel.png^[colorize:purple:134"},
+	groups = {crumbly = 2, falling_node = 1},
+	sounds = default.node_sound_gravel_defaults(),
+	drop = {
+		max_items = 1,
+		items = {
+			{items = {'default:flint'}, rarity = 16},
+			{items = {'default:gravel'}}
+		}
+	}
+})
 
 
 --
@@ -439,7 +532,7 @@ minetest.override_item("default:water_source", {
 	--drawtype = "solid",
 	tiles = {
 		{
-			name = "default_ice.png",
+			name = "default_lava_source_animated.png",
 			animation = {
 				type = "vertical_frames",
 				aspect_w = 16,
@@ -451,7 +544,7 @@ minetest.override_item("default:water_source", {
 	special_tiles = {
 		-- New-style water source material (mostly unused)
 		{
-			name = "default_water_source_animated.png",
+			name = "default_lava_source_animated.png",
 			animation = {
 				type = "vertical_frames",
 				aspect_w = 16,
@@ -464,6 +557,7 @@ minetest.override_item("default:water_source", {
 	--alpha = 160,
 	alpha = 210,
 	paramtype = "light",
+	light_source = default.LIGHT_MAX - 1,
 	walkable = false,
 	climbable = true,
 	pointable = false,
@@ -478,7 +572,7 @@ minetest.override_item("default:water_source", {
 	liquid_viscosity = 4,
 	post_effect_color = {a = 213, r = 30, g = 60, b = 90},
 	groups = {water = 3, liquid = 3, puts_out_fire = 1},
-	sounds = default.node_sound_glass_defaults(),
+	
 })
 
 minetest.override_item("default:water_flowing", {
@@ -487,7 +581,7 @@ minetest.override_item("default:water_flowing", {
 	tiles = {"default_water.png"},
 	special_tiles = {
 		{
-			name = "default_ice.png",
+			name = "default_lava_flowing_animated.png",
 			backface_culling = false,
 			animation = {
 				type = "vertical_frames",
@@ -497,7 +591,7 @@ minetest.override_item("default:water_flowing", {
 			},
 		},
 		{
-			name = "default_water_flowing_animated.png",
+			name = "default_lava_flowing_animated.png",
 			backface_culling = true,
 			animation = {
 				type = "vertical_frames",
@@ -510,6 +604,7 @@ minetest.override_item("default:water_flowing", {
 	alpha = 210,
 	paramtype = "light",
 	paramtype2 = "flowingliquid",
+	light_source = default.LIGHT_MAX - 1,
 	walkable = false,
 	pointable = false,
 	diggable = false,
@@ -524,6 +619,219 @@ minetest.override_item("default:water_flowing", {
 	post_effect_color = {a = 203, r = 30, g = 60, b = 90},
 	groups = {water = 3, liquid = 3, puts_out_fire = 1,
 		not_in_creative_inventory = 1},
-		sounds = default.node_sound_glass_defaults(),
+		--sounds = default.node_sound_glass_defaults(),
 })
 
+minetest.override_item("default:stone_with_coal", {
+	description = "Coal Ore",
+	tiles = {"default_obsidian.png^default_mineral_coal.png"},
+	groups = {cracky = 3},
+	drop = 'default:coal_lump',
+	sounds = default.node_sound_stone_defaults(),
+})
+
+minetest.override_item("default:stone_with_iron", {
+	description = "Iron Ore",
+	tiles = {"default_obsidian.png^default_mineral_iron.png"},
+	groups = {cracky = 2},
+	drop = 'default:iron_lump',
+	sounds = default.node_sound_stone_defaults(),
+})
+
+minetest.override_item("default:stone_with_copper", {
+	description = "Copper Ore",
+	tiles = {"default_obsidian.png^default_mineral_copper.png"},
+	groups = {cracky = 2},
+	drop = 'default:copper_lump',
+	sounds = default.node_sound_stone_defaults(),
+})
+
+minetest.override_item("default:stone_with_gold", {
+	description = "Gold Ore",
+	tiles = {"default_obsidian.png^default_mineral_gold.png"},
+	groups = {cracky = 2},
+	drop = "default:gold_lump",
+	sounds = default.node_sound_stone_defaults(),
+})
+
+minetest.override_item("default:stone_with_diamond", {
+	description = "Diamond Ore",
+	tiles = {"default_obsidian.png^default_mineral_diamond.png"},
+	groups = {cracky = 1},
+	drop = "default:diamond",
+	sounds = default.node_sound_stone_defaults(),
+})
+
+
+
+minetest.override_item("default:goldblock", {
+	description = "Gold Block",
+	tiles = {"default_gold_block.png^mobs_cobweb.png"},
+	is_ground_content = false,
+	groups = {cracky = 1},
+	sounds = default.node_sound_metal_defaults(),
+})
+minetest.override_item("default:bronzeblock", {
+	description = "Bronze Block",
+	tiles = {"default_bronze_block.png^mobs_cobweb.png"},
+	is_ground_content = false,
+	groups = {cracky = 1, level = 2},
+	sounds = default.node_sound_metal_defaults(),
+})
+minetest.override_item("default:copperblock", {
+	description = "Copper Block",
+	tiles = {"default_copper_block.png^mobs_cobweb.png"},
+	is_ground_content = false,
+	groups = {cracky = 1, level = 2},
+	sounds = default.node_sound_metal_defaults(),
+})
+minetest.override_item("default:steelblock", {
+	description = "Steel Block",
+	tiles = {"default_steel_block.png^mobs_cobweb.png"},
+	is_ground_content = false,
+	groups = {cracky = 1, level = 2},
+	sounds = default.node_sound_metal_defaults(),
+})
+minetest.override_item("default:diamondblock", {
+	description = "Diamond Block",
+	tiles = {"default_diamond_block.png^default_portal.png^mobs_cobweb.png"},
+	is_ground_content = false,
+	groups = {cracky = 1, level = 3},
+	sounds = default.node_sound_stone_defaults(),
+})
+
+minetest.override_item("default:stone_with_mese", {
+	description = "Mese Ore",
+	tiles = {"default_stone.png^default_mineral_mese.png^[colorize:purple:180"},
+	groups = {cracky = 1},
+	drop = "default:mese_crystal",
+	sounds = default.node_sound_stone_defaults(),
+})
+
+minetest.override_item("default:mese", {
+	description = "Mese Block",
+	tiles = {"default_mese_block.png^[colorize:purple:180"},
+	paramtype = "light",
+	groups = {cracky = 1, level = 2},
+	sounds = default.node_sound_stone_defaults(),
+	light_source = 3,
+})
+
+
+
+minetest.override_item("default:brick", {
+	description = "Brick Block",
+	paramtype2 = "facedir",
+	place_param2 = 0,
+	tiles = {"default_brick.png^[colorize:black:190"},
+	is_ground_content = false,
+	groups = {cracky = 3},
+	sounds = default.node_sound_stone_defaults(),
+})
+
+minetest.override_item("default:cloud", {
+	description = "Cloud",
+	tiles = {"default_cloud.png^[colorize:red:190"},
+	is_ground_content = false,
+	sounds = default.node_sound_defaults(),
+	groups = {not_in_creative_inventory = 1},
+})
+
+
+minetest.override_item("default:mese_crystal", {
+	description = "Mese Crystal",
+	inventory_image = "default_mese_crystal.png^[colorize:purple:180",
+})
+
+minetest.override_item("default:mese_crystal_fragment", {
+	description = "Mese Crystal Fragment",
+	inventory_image = "default_mese_crystal_fragment.png^[colorize:purple:180",
+})
+
+minetest.override_item("default:pick_mese", {
+	description = "Mese Pickaxe",
+	inventory_image = "default_tool_mesepick.png^[colorize:purple:180",
+	tool_capabilities = {
+		full_punch_interval = 0.9,
+		max_drop_level=3,
+		groupcaps={
+			cracky = {times={[1]=2.4, [2]=1.2, [3]=0.60}, uses=20, maxlevel=3},
+		},
+		damage_groups = {fleshy=5},
+	},
+})
+minetest.override_item("default:shovel_mese", {
+	description = "Mese Shovel",
+	inventory_image = "default_tool_meseshovel.png^[colorize:purple:180",
+	wield_image = "default_tool_meseshovel.png^[transformR90^[colorize:purple:180",
+	tool_capabilities = {
+		full_punch_interval = 1.0,
+		max_drop_level=3,
+		groupcaps={
+			crumbly = {times={[1]=1.20, [2]=0.60, [3]=0.30}, uses=20, maxlevel=3},
+		},
+		damage_groups = {fleshy=4},
+	},
+})
+minetest.override_item("default:axe_mese", {
+	description = "Mese Axe",
+	inventory_image = "default_tool_meseaxe.png^[colorize:purple:180",
+	tool_capabilities = {
+		full_punch_interval = 0.9,
+		max_drop_level=1,
+		groupcaps={
+			choppy={times={[1]=2.20, [2]=1.00, [3]=0.60}, uses=20, maxlevel=3},
+		},
+		damage_groups = {fleshy=6},
+	},
+})
+minetest.override_item("default:sword_mese", {
+	description = "Mese Sword",
+	inventory_image = "default_tool_mesesword.png^[colorize:purple:180",
+	tool_capabilities = {
+		full_punch_interval = 0.7,
+		max_drop_level=1,
+		groupcaps={
+			snappy={times={[1]=2.0, [2]=1.00, [3]=0.35}, uses=30, maxlevel=3},
+		},
+		damage_groups = {fleshy=7},
+	}
+})
+
+
+
+
+--AUTUMN CRAFTS
+minetest.register_craft({
+	output = "mt_seasons:jackolantern",
+	recipe = {
+		{"", "", ""},
+		{"", "default:torch", ""},
+		{"", "mt_seasons:pumpkin", ""},
+	}
+})
+
+-- pumpkin bread
+minetest.register_craftitem("mt_seasons:pumpkin_bread", {
+	description = "Pumpkin Bread",
+	inventory_image = "farming_pumpkin_bread.png",
+	on_use = minetest.item_eat(8)
+})
+
+minetest.register_craftitem("mt_seasons:pumpkin_dough", {
+	description = "Pumpkin Dough",
+	inventory_image = "farming_pumpkin_dough.png",
+})
+
+minetest.register_craft({
+	output = "mt_seasons:pumpkin_dough",
+	type = "shapeless",
+	recipe = {"farming:flour", "default:pumpkin_slice", "default:pumpkin_slice"}
+})
+
+minetest.register_craft({
+	type = "cooking",
+	output = "mt_seasons:pumpkin_bread",
+	recipe = "mt_seasons:pumpkin_dough",
+	cooktime = 10
+})

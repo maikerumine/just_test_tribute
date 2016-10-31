@@ -2,6 +2,7 @@
 -- 
 -- See README.txt for licensing and other information.
 --NODE DEFS
+mt_seasons = {}
 
 local clrs = {
 	{"black",      "Black",      "#000000b0"},
@@ -87,6 +88,8 @@ minetest.register_node("mt_seasons:gift_box_" .. clrs[i][1], {
 	
 	sounds = default.node_sound_dirt_defaults(),
 })
+
+--Supress for seasons
 --[[
 --sent to winter
 minetest.register_craft({

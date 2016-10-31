@@ -4,6 +4,8 @@ minetest.register_on_newplayer(function(player)
 		player:get_inventory():add_item('main', 'default:torch 3')
 		player:get_inventory():add_item('main', 'default:apple 3')
 		player:get_inventory():add_item('main', 'default:pick_wood 1')
+		player:get_inventory():add_item('main', 'mt_seasons:jackolantern 1')
+		player:get_inventory():add_item('main', 'default:goldblock 1')
 		
 		
 

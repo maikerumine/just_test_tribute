@@ -18,8 +18,9 @@ mobs:register_mob("mobs:just_test_griefer", {
 	visual = "mesh",
 	mesh = "3d_armor_character.b3d",
 	textures = {{
-	"character_32.png",
+	--"character_32.png",
 	"3d_armor_trans.png",
+	"herobrines_blody_gost_by_lovehart.png",
 	minetest.registered_items["default:sword_steel"].inventory_image,
 	}},
 	visual_size = {x=1, y=1},
@@ -29,7 +30,7 @@ mobs:register_mob("mobs:just_test_griefer", {
 	run_velocity = 3,
 	damage = 2,
 	drops = {
-		{name = "default:griefer_soul",
+		{name = "jt_mods:griefer_soul",
 		chance = 7,
 		min = 0,
 		max = 1,},

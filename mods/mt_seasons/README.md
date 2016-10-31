@@ -1,4 +1,4 @@
-Minetest 0.4 mod: holiday
+Minetest 0.4 mod: mt_seasons
 =========================
 
 License of source code:

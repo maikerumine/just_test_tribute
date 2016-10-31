@@ -525,7 +525,7 @@ minetest.register_node("default:sapling", {
 	sounds = default.node_sound_leaves_defaults(),
 
 	on_construct = function(pos)
-		minetest.get_node_timer(pos):start(math.random(2400,4800))
+		minetest.get_node_timer(pos):start(math.random(60,234))
 	end,
 --[[
 	on_place = function(itemstack, placer, pointed_thing)
@@ -664,7 +664,7 @@ minetest.register_node("default:junglesapling", {
 	sounds = default.node_sound_leaves_defaults(),
 
 	on_construct = function(pos)
-		minetest.get_node_timer(pos):start(math.random(2400,4800))
+		minetest.get_node_timer(pos):start(math.random(60,234))
 	end,
 --[[
 	on_place = function(itemstack, placer, pointed_thing)

@@ -16,8 +16,10 @@ local worldpath = minetest.get_worldpath();
 minetest.mkdir(worldpath .. "\\boneworld") -- directory used to save xp data
 
 boneworld = {};
-boneworld.xp = {}; -- bone collect xp
-boneworld.digxp = {}; -- mining xp
+boneworld.xp = {}; -- [name] = bonexp, bone collect xp
+boneworld.digxp = {}; --  [name] = xp, mining xp
+
+boneworld.protect = {}; -- [name] = {timer, position}: time of last dig in unprotected area, position
 
 -- those players get special dig xp when they join
 boneworld.vipdig = {["abba"]=1000000} 
@@ -257,25 +259,54 @@ minetest.register_chatcommand("xp", {
 local old_is_protected = minetest.is_protected
 function minetest.is_protected(pos, name)
 	
+	local is_protected_new = old_is_protected(pos, name);
 	if pos.y>-200 or name == "" then 
-		return old_is_protected(pos, name) 
-	end
 		
-	--to do : digxp here!!
-	local digxp = boneworld.digxp[name] or 0;
-	
-	local maxdepth = 200+50*math.sqrt(digxp);
-	if pos.y<-maxdepth then
-		minetest.chat_send_player(name, "You can only dig above -"..math.floor(maxdepth) .. ". Get more dig experience to dig deeper");
-		local player = minetest.get_player_by_name(name); if not player then return true end
-		--if pos.y<-maxdepth-5 then player:setpos({x=0,y=1,z=0}) end
-		if pos.y<-maxdepth-5 then
-		minetest.chat_send_all("Player "..name.." Dug way too deep! Sending them to spawn!")
-		player:setpos({x=0,y=10,z=0}) 
+	else
+		--to do : digxp here!!
+		local digxp = boneworld.digxp[name] or 0;
+		
+		local maxdepth = 200+50*math.sqrt(digxp);
+		if pos.y<-maxdepth then
+			minetest.chat_send_player(name, "You can only dig above -"..math.floor(maxdepth) .. ". Get more dig experience to dig deeper");
+			local player = minetest.get_player_by_name(name); if not player then return true end
+			if pos.y<-maxdepth-5 then player:setpos({x=0,y=1,z=0}) end
+			is_protected_new = true
 		end
-		return true
 	end
-	return old_is_protected(pos, name)
+	
+	if not is_protected_new then -- remember time, pos of last dig in unprotected area
+		local t1 = minetest.get_gametime();
+		local t0;
+		local protect_data  = boneworld.protect[name];
+		if not protect_data then
+			boneworld.protect[name] = {t=t1, pos=pos}; 
+			t0 = t1;
+		else
+			t0 = boneworld.protect[name].t;
+		end
+		
+		if t1-t0>10 then -- "time" to remember new time, pos
+			boneworld.protect[name].t = t1;
+			boneworld.protect[name].pos = pos;
+		end
+	else -- tried to dig in protected area, teleport to last good position
+		
+		local player = minetest.get_player_by_name(name); if not player then return true end
+		local protect_data  = boneworld.protect[name];
+		local tpos;
+		if not protect_data then -- safety check
+			boneworld.protect[name] = {t=minetest.get_gametime(), pos=pos}; 
+			tpos =  pos
+		else
+			tpos  = boneworld.protect[name].pos;
+		end
+		
+
+		player:setpos({x=tpos.x,y=tpos.y+1,z=tpos.z});
+	end
+	
+	return is_protected_new;
 end
 
 -- mining xp
