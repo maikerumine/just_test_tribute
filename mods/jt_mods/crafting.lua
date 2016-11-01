@@ -66,7 +66,7 @@ minetest.register_craft({
 	output = 'default:pine_sapling',
 	recipe = {
 		{"group:leaves", "default:sand", "group:leaves"},
-		{"default:sand", "default:jungle_sapling", "default:sand"},
+		{"default:sand", "default:junglesapling", "default:sand"},
 		{"group:leaves", "default:sand", "group:leaves"},
 	},
 })

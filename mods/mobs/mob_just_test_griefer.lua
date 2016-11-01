@@ -18,9 +18,9 @@ mobs:register_mob("mobs:just_test_griefer", {
 	visual = "mesh",
 	mesh = "3d_armor_character.b3d",
 	textures = {{
-	--"character_32.png",
+	"character_32.png",
 	"3d_armor_trans.png",
-	"herobrines_blody_gost_by_lovehart.png",
+	--"herobrines_blody_gost_by_lovehart.png",
 	minetest.registered_items["default:sword_steel"].inventory_image,
 	}},
 	visual_size = {x=1, y=1},
