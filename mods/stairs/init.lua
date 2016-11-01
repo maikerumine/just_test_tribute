@@ -351,7 +351,7 @@ stairs.register_all("tree", "default:tree",
 	stairs.wood)
 	
 stairs.register_all("wood", "default:wood",
-	{choppy = 2, oddly_breakable_by_hand = 2, flammable = 3,not_in_craft_guide=1},
+	{choppy = 2, oddly_breakable_by_hand = 2, flammable = 3},
 	{"default_wood.png"},
 	"Wooden",
 	stairs.wood)
@@ -521,7 +521,7 @@ stairs.register_all("sandstone", "default:sandstone",
 	stairs.stone)
 
 stairs.register_all("glass", "default:glass",
-	{cracky = 3, oddly_breakable_by_hand = 3,not_in_craft_guide=1},
+	{cracky = 3, oddly_breakable_by_hand = 3},
 	{"default_glass.png"},
 	"Glass",
 	stairs.glass)
@@ -551,7 +551,7 @@ stairs.register_all("sandstonebrick", "default:sandstonebrick",
 stairs.register_stair_and_slab(
 	"sandstone_block",
 	"default:sandstone_block",
-	{cracky = 2},
+	{cracky = 2 ,not_in_craft_guide=1},
 	{"default_sandstone_block.png"},
 	"Sandstone Block Stair",
 	"Sandstone Block Slab",
@@ -567,7 +567,7 @@ stairs.register_all("obsidian", "default:obsidian",
 stairs.register_stair_and_slab(
 	"obsidian_block",
 	"default:obsidian_block",
-	{cracky = 1, level = 2},
+	{cracky = 1, level = 2 ,not_in_craft_guide=1},
 	{"default_obsidian_block.png"},
 	"Obsidian Block Stair",
 	"Obsidian Block Slab",
@@ -599,7 +599,7 @@ stairs.register_all("desert_stonebrick", "default:desert_stonebrick",
 stairs.register_stair_and_slab(
 	"desert_stone_block",
 	"default:desert_stone_block",
-	{cracky = 2},
+	{cracky = 2 ,not_in_craft_guide=1},
 	{"default_desert_stone_block.png"},
 	"Desert Stone Block Stair",
 	"Desert Stone Block Slab",
