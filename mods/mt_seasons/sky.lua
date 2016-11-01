@@ -14,12 +14,12 @@ minetest.register_on_shutdown(function(player)
 end)
 
 local skytextures = {
-	"red.png",
-	"red.png",
-	"red.png",
-	"red.png",	
-	"red.png",
-	"red.png",
+	"black.png",
+	"black.png",
+	"black.png",
+	"black.png",	
+	"black.png",
+	"black.png",
 }
 
 --[[
@@ -37,8 +37,8 @@ minetest.register_on_joinplayer(function(player)
 	minetest.after(0, function()
 		--player:set_sky({r=0, g=0, b=0, a=0},"skybox", skytextures)
 		--player:set_sky({r=219, g=168, b=117},"skybox", skytextures)
-		--player:set_sky({r=219, g=8, b=7},"skybox", skytextures)
-		player:set_sky({r=80, g=8, b=37},"skybox", skytextures)
+		player:set_sky({r=219, g=8, b=7},"skybox", skytextures)
+		--player:set_sky({r=80, g=8, b=37},"skybox", skytextures)
 	end)
 end)
 

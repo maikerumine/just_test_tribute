@@ -14,6 +14,15 @@
 --Media(if not stated differently):
 --(c) Copyright (2014-2016) maikerumine; CC-BY-SA 3.0
 
+
+
+minetest.override_item("default:gold_ingot", {
+	description = "Gold Ingot",
+	inventory_image = "default_gold_ingot.png",
+	stack_max = 999,
+})
+
+
 --hehe change up the craft ;-)
 minetest.register_craft({
 	output = 'default:desert_cobble 8',
@@ -44,6 +53,48 @@ minetest.register_craft({
 	},
 })
 
+minetest.register_craft({
+	output = 'default:junglesapling',
+	recipe = {
+		{"group:leaves", "default:junglegrass", "group:leaves"},
+		{"default:junglegrass", "default:sapling", "default:junglegrass"},
+		{"group:leaves", "default:junglegrass", "group:leaves"},
+	},
+})
+
+minetest.register_craft({
+	output = 'default:pine_sapling',
+	recipe = {
+		{"group:leaves", "default:sand", "group:leaves"},
+		{"default:sand", "default:jungle_sapling", "default:sand"},
+		{"group:leaves", "default:sand", "group:leaves"},
+	},
+})
+
+minetest.register_craft({
+	output = 'default:acacia_sapling',
+	recipe = {
+		{"group:leaves", "default:dry_shrub", "group:leaves"},
+		{"default:dry_shrub", "default:pine_sapling", "default:dry_shrub"},
+		{"group:leaves", "default:dry_shrub", "group:leaves"},
+	},
+})
+
+minetest.register_craft({
+	output = 'default:aspen_sapling',
+	recipe = {
+		{"group:leaves", "default:papyrus", "group:leaves"},
+		{"default:papyrus", "default:acacia_sapling", "default:papyrus"},
+		{"group:leaves", "default:papyrus", "group:leaves"},
+	},
+})
+
+minetest.register_craft({
+	type = "cooking",
+	output = "default:dry_shrub",
+	recipe = "default:junglegrass",
+})
+
 --Lag Block
 --maikerumine
 minetest.register_craft({
@@ -52,6 +103,14 @@ minetest.register_craft({
 		{"default:dirt_with_grass", "default:desert_stonebrick", "default:bronze_ingot"},
 		{"default:diamondblock", "default:ice", "default:snowblock"},
 		{"default:pick_diamond", "default:sandstonebrick", "default:obsidian"},
+	},
+	
+})minetest.register_craft({
+	output = 'jt_mods:heart_block',
+	recipe = {
+		{"default:stone", "default:stone", "default:stone"},
+		{"default:stone", "default:apple", "default:stone"},
+		{"default:stone", "default:stone", "default:stone"},
 	},
 })
 

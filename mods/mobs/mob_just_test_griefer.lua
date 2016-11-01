@@ -45,7 +45,7 @@ mobs:register_mob("mobs:just_test_griefer", {
 
 	},
 	light_resistant = true,
-	armor = 80,
+	armor = 60,
 	drawtype = "front",
 	water_damage = 0,
 	lava_damage = 1,

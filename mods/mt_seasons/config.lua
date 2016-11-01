@@ -3,7 +3,7 @@
 --made forMinetest Game
 --License for code lgpl-2.1
 mt_seasons = {}
-mt_seasons.SETTING = 5;
+mt_seasons.SETTING = 3;
 
 
 -----------------------------------------------------------------------------
@@ -17,6 +17,7 @@ mt_seasons.SETTING = 5;
 --	6 == Stone world		An all stone world.  [Works on new map chunks only, irreversable.]
 --	7 == Christmas 		A Christmas winter wonderland world.
 --	8== Cobble! 		LOL.
+
 
 
 

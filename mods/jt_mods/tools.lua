@@ -37,6 +37,7 @@ minetest.register_tool("jt_mods:pick_admin", {
 			cracky = {times={[1]=0.3, [2]=0.2, [3]=0.05}, uses=3000, maxlevel=3},
 			crumbly = {times={[1]=0.3, [2]=0.2, [3]=0.05}, uses=3000, maxlevel=3},
 			snappy = {times={[1]=0.3, [2]=0.2, [3]=0.05}, uses=3000, maxlevel=3},
+			choppy = {times={[1]=0.3, [2]=0.2, [3]=0.05}, uses=3000, maxlevel=3},
 		},
 		damage_groups = {fleshy=60},
 	},

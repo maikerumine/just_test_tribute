@@ -44,6 +44,16 @@ minetest.register_node("jt_mods:griefer_soul_block", {
 	sounds =default.node_sound_wood_defaults(),
 })
 
+minetest.register_node("jt_mods:heart_block", {
+	description = "Why's Heart Block",
+	paramtype2 = "facedir",
+	place_param2 = 0,
+	tiles = {"default_stone.png^heart.png"},
+	is_ground_content = false,
+	groups = {cracky = 2, stone = 1,dig_immediate=2},
+	sounds =default.node_sound_wood_defaults(),
+})
+
 minetest.register_node("jt_mods:meselamp_white", {
 	description = "Mese Lamp White",
 	drawtype = "glasslike",

@@ -1,6 +1,6 @@
 	
 mobs:register_mob("mobs:jack", {
-	type = "monster",
+	type = "npc",
 	passive = false,
 	attack_type = "dogfight",
 	pathfinding = 1,
@@ -9,7 +9,7 @@ mobs:register_mob("mobs:jack", {
 	hp_max = 25,
 	collisionbox = {-0.75, -0.75, -0.75, 0.75, 0.75, 0.75},
 	visual_size = {x=1.5, y=1.5},
-
+--[[
 	--JACKS SEASONAL TEXTURE
 	textures = {
 	{
@@ -21,8 +21,8 @@ mobs:register_mob("mobs:jack", {
 	"farming_pumpkin_side.png"
 	}
 	},
+	]]
 	
-	--[[
 	--JACKS NORMAL TEXTURE
 	textures = {
 	{
@@ -30,11 +30,11 @@ mobs:register_mob("mobs:jack", {
 	"default_stone.png",
 	"default_stone.png",
 	"default_stone.png",
-	"default_stone.png^heart.png^[colorize:black:120",
+	"default_stone.png^heart.png",
 	"default_stone.png"
 	}
 	},
-	]]
+	
 	
 	visual = "cube",
 	blood_texture ="default_stone.png",
@@ -43,13 +43,13 @@ mobs:register_mob("mobs:jack", {
 	walk_velocity = .8,
 	run_velocity = 2.6,
 	damage = 2,
-	armor = 100,
+	armor = 80,
 	drops = {
-		{name = "default:jungleleaves",
+		{name = "default:stone_brick",
 		chance = 2,
 		min = 1,
 		max = 1,},		
-		{name = "default:leaves",
+		{name = "default:stone_block",
 		chance = 2,
 		min = 1,
 		max = 1,},
@@ -99,9 +99,12 @@ mobs:register_mob("mobs:jack", {
 --mobs:spawn_specfic(name, nodes, neighbors, min_light, max_light, interval, chance, active_object_count, min_height, max_height, day_toggle, on_spawn)
 --mobs:register_spawn("mobs_monster:dirt_monster",{"default:dirt_with_grass", "ethereal:gray_dirt"}, 7, 0, 7000, 1, 31000, false)
 --mobs:register_spawn("mobs:jack", {"default:mossycobble"}, 7, 0, 50, 2, 31000)
-mobs:spawn_specific("mobs:jack", {"default:mossycobble"}, {"air"},
-	0, 6, 35, 3000, 2, -1, 31000)
-	
+mobs:spawn_specific("mobs:jack", {"default:stone"}, {"air"},
+	0, 4, 15, 3000, 1, -1, 31000)
+	--[[
+	mobs:spawn_specific("mobs:jack",{"default:stone", "default:desert_stone"}, {"air"},
+	0, 4, 15, 2000, 20, 0, 31000)
+	]]
 mobs:register_mob("mobs:jack_junior", {
 	type = "monster",
 	passive = false,
@@ -112,7 +115,7 @@ mobs:register_mob("mobs:jack_junior", {
 	hp_max = 8,
 	collisionbox = {-0.375, -0.375, -0.375, 0.375, 0.375, 0.375},
 	visual_size = {x=0.75, y=0.75},
-	
+	--[[
 	--JACKS SEASONAL TEXTURE
 	textures = {
 	{
@@ -124,8 +127,8 @@ mobs:register_mob("mobs:jack_junior", {
 	"farming_pumpkin_side.png"
 	}
 	},
+	]]
 	
-	--[[
 	--JACKS NORMAL TEXTURE
 	textures = {
 	{
@@ -133,11 +136,11 @@ mobs:register_mob("mobs:jack_junior", {
 	"default_stone.png",
 	"default_stone.png",
 	"default_stone.png",
-	"default_stone.png^heart.png^[colorize:black:120",
+	"default_stone.png^heart.png",
 	"default_stone.png"
 	}
 	},
-	]]
+	
 	visual = "cube",
 	blood_texture ="default_stone.png",
 	--rotate = 270,
@@ -151,7 +154,7 @@ mobs:register_mob("mobs:jack_junior", {
 		chance = 1,
 		min = 1,
 		max = 2,},
-		{name = "mt_seasons:pumpkin_slice",
+		{name = "default:apple",
 		chance = 1,
 		min = 1,
 		max = 2,},
