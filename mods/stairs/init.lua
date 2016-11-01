@@ -548,11 +548,31 @@ stairs.register_all("sandstonebrick", "default:sandstonebrick",
 	"Sandstone Brick",
 	stairs.stone)
 
+stairs.register_stair_and_slab(
+	"sandstone_block",
+	"default:sandstone_block",
+	{cracky = 2},
+	{"default_sandstone_block.png"},
+	"Sandstone Block Stair",
+	"Sandstone Block Slab",
+	default.node_sound_stone_defaults()
+)
+
 stairs.register_all("obsidian", "default:obsidian",
 	{cracky = 1, level = 2,not_in_craft_guide=1},
 	{"default_obsidian.png"},
 	"Obsidian",
 	stairs.stone)
+
+stairs.register_stair_and_slab(
+	"obsidian_block",
+	"default:obsidian_block",
+	{cracky = 1, level = 2},
+	{"default_obsidian_block.png"},
+	"Obsidian Block Stair",
+	"Obsidian Block Slab",
+	default.node_sound_stone_defaults()
+)
 
 stairs.register_all("stonebrick", "default:stonebrick",
 	{cracky = 2,not_in_craft_guide=1},
@@ -560,11 +580,31 @@ stairs.register_all("stonebrick", "default:stonebrick",
 	"Stone Brick",
 	stairs.stone)
 
+	stairs.register_stair_and_slab(
+	"stone_block",
+	"default:stone_block",
+	{cracky = 2},
+	{"default_stone_block.png"},
+	"Stone Block Stair",
+	"Stone Block Slab",
+	default.node_sound_stone_defaults()
+)
+
 stairs.register_all("desert_stonebrick", "default:desert_stonebrick",
 	{cracky = 3,not_in_craft_guide=1},
 	{"default_desert_stone_brick.png"},
 	"Desert Stone Brick",
 	stairs.stone)
+
+stairs.register_stair_and_slab(
+	"desert_stone_block",
+	"default:desert_stone_block",
+	{cracky = 2},
+	{"default_desert_stone_block.png"},
+	"Desert Stone Block Stair",
+	"Desert Stone Block Slab",
+	default.node_sound_stone_defaults()
+)
 
 stairs.register_all("obsidianbrick", "default:obsidianbrick",
 	{cracky = 1, level = 3,not_in_craft_guide=1},
