@@ -65,3 +65,52 @@ minetest.register_node("jt_mods:meselamp_white", {
 	sounds =default.node_sound_glass_defaults(),
 	light_source = default.LIGHT_MAX,
 })
+
+--desert stone ore
+minetest.register_node("jt_mods:desert_stone_with_diamondz", {
+	description = "Diamond Ore",
+	tiles = {"default_desert_stone.png^default_mineral_diamond.png"},
+	groups = {cracky = 1},
+	drop = "default:diamond",
+	sounds = default.node_sound_stone_defaults(),
+})
+
+minetest.register_node("jt_mods:desert_stone_with_goldz", {
+	description = "Gold Ore",
+	tiles = {"default_desert_stone.png^default_mineral_gold.png"},
+	groups = {cracky = 2},
+	drop = "default:gold_lump",
+	sounds = default.node_sound_stone_defaults(),
+})
+
+minetest.register_node("jt_mods:desert_stone_with_copperz", {
+	description = "Copper Ore",
+	tiles = {"default_desert_stone.png^default_mineral_copper.png"},
+	groups = {cracky = 2},
+	drop = 'default:copper_lump',
+	sounds = default.node_sound_stone_defaults(),
+})
+
+minetest.register_node("jt_mods:desert_stone_with_ironz", {
+	description = "Iron Ore",
+	tiles = {"default_desert_stone.png^default_mineral_iron.png"},
+	groups = {cracky = 2},
+	drop = 'default:iron_lump',
+	sounds = default.node_sound_stone_defaults(),
+})
+
+minetest.register_node("jt_mods:desert_stone_with_coalz", {
+	description = "Coal Ore",
+	tiles = {"default_desert_stone.png^default_mineral_coal.png"},
+	groups = {cracky = 3},
+	drop = 'default:coal_lump',
+	sounds = default.node_sound_stone_defaults(),
+})
+
+minetest.register_node("jt_mods:desert_stone_with_meatz", {
+	description = "Coal Ore",
+	tiles = {"default_desert_stone.png^mobs_meat_raw.png"},
+	groups = {cracky = 3},
+	drop = 'mobs:meat_raw',
+	sounds = default.node_sound_stone_defaults(),
+})

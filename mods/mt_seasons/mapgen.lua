@@ -7,7 +7,7 @@ minetest.register_alias("mapgen_dirt", "default:dirt")
 minetest.register_alias("mapgen_dirt_with_grass", "default:dirt_with_grass")
 minetest.register_alias("mapgen_sand", "default:sand")
 minetest.register_alias("mapgen_water_source", "default:water_source")
-minetest.register_alias("mapgen_river_water_source", "default:river_water_source")
+minetest.register_alias("mapgen_river_water_source", "air")
 minetest.register_alias("mapgen_lava_source", "default:lava_source")
 minetest.register_alias("mapgen_gravel", "default:gravel")
 minetest.register_alias("mapgen_desert_stone", "default:desert_stone")
@@ -776,16 +776,16 @@ function default.register_biomes()
 	minetest.register_biome({
 		name = "desert",
 		--node_dust = "",
-		node_top = "default:desert_stone",
+		node_top = "default:stone",
 		depth_top = 1,
-		node_filler = "default:desert_stone",
+		node_filler = "default:stone",
 		depth_filler = 1,
-		node_stone = "default:desert_stone",
+		node_stone = "default:stone",
 		--node_water_top = "",
 		--depth_water_top = ,
 		--node_water = "",
 		--node_river_water = "",
-		node_riverbed = "default:desert_stone",
+		node_riverbed = "default:stone",
 		depth_riverbed = 2,
 		y_min = 5,
 		y_max = 31000,
@@ -796,16 +796,16 @@ function default.register_biomes()
 	minetest.register_biome({
 		name = "desert_ocean",
 		--node_dust = "",
-		node_top = "default:desert_stone",
+		node_top = "default:stone",
 		depth_top = 1,
 		node_filler = "default:air",
 		depth_filler = 3,
-		node_stone = "default:desert_stone",
+		node_stone = "default:stone",
 		--node_water_top = "",
 		--depth_water_top = ,
 		--node_water = "",
 		--node_river_water = "",
-		node_riverbed = "default:desert_stone",
+		node_riverbed = "default:stone",
 		depth_riverbed = 2,
 		y_min = -112,
 		y_max = 4,
@@ -817,16 +817,16 @@ function default.register_biomes()
 	minetest.register_biome({
 		name = "savanna",
 		--node_dust = "",
-		node_top = "default:desert_stone",
+		node_top = "default:stone",
 		depth_top = 1,
-		node_filler = "default:desert_stone",
+		node_filler = "default:stone",
 		depth_filler = 1,
 		--node_stone = "",
 		--node_water_top = "",
 		--depth_water_top = ,
 		--node_water = "",
 		--node_river_water = "",
-		node_riverbed = "default:desert_stone",
+		node_riverbed = "default:stone",
 		depth_riverbed = 2,
 		y_min = 1,
 		y_max = 31000,
@@ -837,7 +837,7 @@ function default.register_biomes()
 	minetest.register_biome({
 		name = "savanna_swamp",
 		--node_dust = "",
-		node_top = "default:desert_stone",
+		node_top = "default:stone",
 		depth_top = 1,
 		node_filler = "default:air",
 		depth_filler = 3,
@@ -846,7 +846,7 @@ function default.register_biomes()
 		--depth_water_top = ,
 		--node_water = "",
 		--node_river_water = "",
-		node_riverbed = "default:desert_stone",
+		node_riverbed = "default:stone",
 		depth_riverbed = 2,
 		y_min = -3,
 		y_max = 0,
@@ -878,7 +878,7 @@ function default.register_biomes()
 	minetest.register_biome({
 		name = "rainforest",
 		--node_dust = "",
-		node_top = "default:desert_stone",
+		node_top = "default:stone",
 		depth_top = 1,
 		node_filler = "default:air",
 		depth_filler = 3,
@@ -887,7 +887,7 @@ function default.register_biomes()
 		--depth_water_top = ,
 		--node_water = "",
 		--node_river_water = "",
-		node_riverbed = "default:desert_stone",
+		node_riverbed = "default:stone",
 		depth_riverbed = 2,
 		y_min = 1,
 		y_max = 31000,
@@ -898,7 +898,7 @@ function default.register_biomes()
 	minetest.register_biome({
 		name = "rainforest_swamp",
 		--node_dust = "",
-		node_top = "default:desert_stone",
+		node_top = "default:stone",
 		depth_top = 1,
 		node_filler = "default:air",
 		depth_filler = 3,
@@ -907,7 +907,7 @@ function default.register_biomes()
 		--depth_water_top = ,
 		--node_water = "",
 		--node_river_water = "",
-		node_riverbed = "default:desert_stone",
+		node_riverbed = "default:stone",
 		depth_riverbed = 2,
 		y_min = -3,
 		y_max = 0,

@@ -16,6 +16,7 @@
 
 -- Load files
 dofile(minetest.get_modpath("jt_mods").."/aliases.lua")
+dofile(minetest.get_modpath("jt_mods").."/moreblocksrem.lua")
 dofile(minetest.get_modpath("jt_mods").."/admintnt.lua")
 dofile(minetest.get_modpath("jt_mods").."/craftitems.lua")
 dofile(minetest.get_modpath("jt_mods").."/crafting.lua")

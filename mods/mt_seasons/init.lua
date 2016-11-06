@@ -44,6 +44,9 @@ if mt_seasons.SETTING == 8 then
 dofile(minetest.get_modpath("mt_seasons").."/cobbleworld.lua")
 end
 
+if mt_seasons.SETTING == 9 then
+dofile(minetest.get_modpath("mt_seasons").."/mapgen_snow_stone_ice.lua")
+end
 
 -- GARBAGE CODE
 --[[

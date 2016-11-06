@@ -40,6 +40,15 @@ minetest.register_craft({
 		{'default:sand', 'default:sand', 'default:sand'},
 	}
 })
+
+minetest.register_craft({
+	output = 'default:silver_sand 8',
+	recipe = {
+		{'default:sand', 'default:sand', 'default:sand'},
+		{'default:sand', 'dye:white', 'default:sand'},
+		{'default:sand', 'default:sand', 'default:sand'},
+	}
+})
 -- Minetest 0.4 mod: apple_sapling
 -- Craft a tree sapling from dirt and apple.
 -- 
@@ -105,7 +114,8 @@ minetest.register_craft({
 		{"default:pick_diamond", "default:sandstonebrick", "default:obsidian"},
 	},
 	
-})minetest.register_craft({
+})
+minetest.register_craft({
 	output = 'jt_mods:heart_block',
 	recipe = {
 		{"default:stone", "default:stone", "default:stone"},
@@ -114,6 +124,8 @@ minetest.register_craft({
 	},
 })
 
+
+--[[
 minetest.register_craft({
 	output = 'jt_mods:lag_ice',
 	recipe = {
@@ -131,13 +143,13 @@ minetest.register_craft({
 		{'jt_mods:lag_ice', 'jt_mods:lag_ice', 'jt_mods:lag_ice'},
 	}
 })
-
+]]
 minetest.register_craft({
-	output = 'default:dirt_with_grass 4',
+	output = 'default:dirt_with_grass 6',
 	recipe = {
-		{"default:dirt", "default:grass_1", "default:dirt"},
-		{"default:grass_1", "bones:bones", "default:grass_1"},
-		{"default:dirt", "default:grass_1", "default:dirt"},
+		{"default:dirt", "default:dirt", "default:dirt"},
+		{"default:grass_1", "default:grass_1", "default:grass_1"},
+		{"default:dirt", "default:dirt", "default:dirt"},
 	},
 })
 
@@ -215,7 +227,7 @@ minetest.register_craft({
 		{'default:mese_crystal', 'default:obsidian_glass', 'default:mese_crystal'},
 	}
 })
-
+--[[
 minetest.register_craft({
 	output = 'jt_mods:griefer_soul_block',
 	recipe = {
@@ -233,3 +245,4 @@ minetest.register_craft({
 		{'default:wood', 'tnt:gunpowder', 'default:wood'},
 	}
 })
+]]

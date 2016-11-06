@@ -26,4 +26,13 @@ minetest.register_alias("default:crushing_furnace_active", "jt_mods:crushing_fur
 minetest.register_alias("default:admin_tnt_fake", "jt_mods:admin_tnt_fake")
 minetest.register_alias("default:admin_tnt_fast", "jt_mods:admin_tnt_fast")
 minetest.register_alias("default:admin_tnt", "jt_mods:admin_tnt")
+minetest.register_alias("default:hd_stonebrick", "air")
+
+--opps desert stone!!
+minetest.register_alias("jt_mods:desert_stone_with_diamond", "jt_mods:desert_stone_with_ironz")
+minetest.register_alias("jt_mods:desert_stone_with_gold", "jt_mods:desert_stone_with_ironz")
+minetest.register_alias("jt_mods:desert_stone_with_copper", "jt_mods:desert_stone_with_copperz")
+minetest.register_alias("jt_mods:desert_stone_with_iron", "jt_mods:desert_stone_with_ironz")
+minetest.register_alias("jt_mods:desert_stone_with_coal", "jt_mods:desert_stone_with_coalz")
+
 

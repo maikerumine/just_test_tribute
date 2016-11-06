@@ -14,383 +14,72 @@
 --Media(if not stated differently):
 --(c) Copyright (2014-2016) maikerumine; CC-BY-SA 3.0
 
---
--- Aliases for map generator outputs
---
-
-minetest.register_alias("mapgen_stone", "default:stone")
-minetest.register_alias("mapgen_dirt", "default:dirt")
-minetest.register_alias("mapgen_dirt_with_grass", "default:dirt_with_grass")
-minetest.register_alias("mapgen_sand", "default:sand")
-minetest.register_alias("mapgen_water_source", "default:water_source")
-minetest.register_alias("mapgen_river_water_source", "default:river_water_source")
-minetest.register_alias("mapgen_lava_source", "default:lava_source")
-minetest.register_alias("mapgen_gravel", "default:gravel")
-minetest.register_alias("mapgen_desert_stone", "default:desert_stone")
-minetest.register_alias("mapgen_desert_sand", "default:desert_sand")
-minetest.register_alias("mapgen_dirt_with_snow", "default:dirt_with_snow")
-minetest.register_alias("mapgen_snowblock", "default:snowblock")
-minetest.register_alias("mapgen_snow", "default:snow")
-minetest.register_alias("mapgen_ice", "default:ice")
-minetest.register_alias("mapgen_sandstone", "default:sandstone")
-
--- Flora
-
-minetest.register_alias("mapgen_tree", "default:tree")
-minetest.register_alias("mapgen_leaves", "default:leaves")
-minetest.register_alias("mapgen_apple", "default:apple")
-minetest.register_alias("mapgen_jungletree", "default:jungletree")
-minetest.register_alias("mapgen_jungleleaves", "default:jungleleaves")
-minetest.register_alias("mapgen_junglegrass", "default:junglegrass")
-minetest.register_alias("mapgen_pine_tree", "default:pine_tree")
-minetest.register_alias("mapgen_pine_needles", "default:pine_needles")
-
--- Dungeons
-
-minetest.register_alias("mapgen_cobble", "default:cobble")
-minetest.register_alias("mapgen_stair_cobble", "stairs:stair_cobble")
-minetest.register_alias("mapgen_mossycobble", "default:mossycobble")
-minetest.register_alias("mapgen_sandstonebrick", "default:sandstonebrick")
-minetest.register_alias("mapgen_stair_sandstonebrick", "stairs:stair_sandstonebrick")
-
-
---
--- Register ores
---
-
-function default.register_ores()
-	-- Blob ores
-	-- These first to avoid other ores in blobs
-		-- Clay
-	-- This first to avoid clay in sand blobs
-
---[[
-	-- Clay
-	-- This first to avoid clay in sand blobs
-
-	minetest.register_ore({
-		ore_type        = "blob",
-		ore             = "default:clay",
-		wherein         = {"default:sand"},
-		clust_scarcity  = 16 * 16 * 16,
-		clust_size      = 5,
-		y_min           = -15,
-		y_max           = 0,
-		noise_threshold = 0.0,
-		noise_params    = {
-			offset = 0.5,
-			scale = 0.2,
-			spread = {x = 5, y = 5, z = 5},
-			seed = -316,
-			octaves = 1,
-			persist = 0.0
-		},
-	})
-
-	-- Sand
-
-	minetest.register_ore({
-		ore_type        = "blob",
-		ore             = "default:sand",
-		wherein         = {"default:stone", "default:sandstone",
-			"default:desert_stone"},
-		clust_scarcity  = 16 * 16 * 16,
-		clust_size      = 5,
-		y_min           = -31,
-		y_max           = 0,
-		noise_threshold = 0.0,
-		noise_params    = {
-			offset = 0.5,
-			scale = 0.2,
-			spread = {x = 5, y = 5, z = 5},
-			seed = 2316,
-			octaves = 1,
-			persist = 0.0
-		},
-	})
-
-	-- Dirt
-
-	minetest.register_ore({
-		ore_type        = "blob",
-		ore             = "default:dirt",
-		wherein         = {"default:stone"},
-		clust_scarcity  = 16 * 16 * 16,
-		clust_size      = 5,
-		y_min           = -31,
-		y_max           = 31000,
-		noise_threshold = 0.0,
-		noise_params    = {
-			offset = 0.5,
-			scale = 0.2,
-			spread = {x = 5, y = 5, z = 5},
-			seed = 17676,
-			octaves = 1,
-			persist = 0.0
-		},
-	})
-
-	-- Gravel
-
-	minetest.register_ore({
-		ore_type        = "blob",
-		ore             = "default:gravel",
-		wherein         = {"default:stone"},
-		clust_scarcity  = 16 * 16 * 16,
-		clust_size      = 5,
-		y_min           = -31000,
-		y_max           = 31000,
-		noise_threshold = 0.0,
-		noise_params    = {
-			offset = 0.5,
-			scale = 0.2,
-			spread = {x = 5, y = 5, z = 5},
-			seed = 766,
-			octaves = 1,
-			persist = 0.0
-		},
-	})
-]]
-	-- Scatter ores
-
-	-- Coal
-
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:stone_with_coal",
-		wherein        = "default:stone",
-		clust_scarcity = 8 * 8 * 8,
-		clust_num_ores = 9,
-		clust_size     = 3,
-		y_min          = 1025,
-		y_max          = 31000,
-	})
-
-	minetest.register_ore({
-		ore_type       = "scatter",
-		ore            = "default:stone_with_coal",
-		wherein        = "default:stone",
-		clust_scarcity = 8 * 8 * 8,
-		clust_num_ores = 8,
-		clust_size     = 3,
-		y_min          = -31000,
-		y_max          = 64,
-	})
-
-	minetest.register_ore({
-		ore_type       = "scatter",
-		ore            = "default:stone_with_coal",
-		wherein        = "default:stone",
-		clust_scarcity = 24 * 24 * 24,
-		clust_num_ores = 27,
-		clust_size     = 6,
-		y_min          = -31000,
-		y_max          = 0,
-	})
-
-	-- Iron
-
-	minetest.register_ore({
-		ore_type       = "scatter",
-		ore            = "default:stone_with_iron",
-		wherein        = "default:stone",
-		clust_scarcity = 9 * 9 * 9,
-		clust_num_ores = 12,
-		clust_size     = 3,
-		y_min          = 1025,
-		y_max          = 31000,
-	})
-
-	minetest.register_ore({
-		ore_type       = "scatter",
-		ore            = "default:stone_with_iron",
-		wherein        = "default:stone",
-		clust_scarcity = 7 * 7 * 7,
-		clust_num_ores = 5,
-		clust_size     = 3,
-		y_min          = -31000,
-		y_max          = 0,
-	})
-
-	minetest.register_ore({
-		ore_type       = "scatter",
-		ore            = "default:stone_with_iron",
-		wherein        = "default:stone",
-		clust_scarcity = 24 * 24 * 24,
-		clust_num_ores = 27,
-		clust_size     = 6,
-		y_min          = -31000,
-		y_max          = -64,
-	})
-
-	-- Copper
-
-	minetest.register_ore({
-		ore_type       = "scatter",
-		ore            = "default:stone_with_copper",
-		wherein        = "default:stone",
-		clust_scarcity = 9 * 9 * 9,
-		clust_num_ores = 5,
-		clust_size     = 3,
-		y_min          = 1025,
-		y_max          = 31000,
-	})
-
-	minetest.register_ore({
-		ore_type       = "scatter",
-		ore            = "default:stone_with_copper",
-		wherein        = "default:stone",
-		clust_scarcity = 12 * 12 * 12,
-		clust_num_ores = 4,
-		clust_size     = 3,
-		y_min          = -63,
-		y_max          = -16,
-	})
-
-	minetest.register_ore({
-		ore_type       = "scatter",
-		ore            = "default:stone_with_copper",
-		wherein        = "default:stone",
-		clust_scarcity = 9 * 9 * 9,
-		clust_num_ores = 5,
-		clust_size     = 3,
-		y_min          = -31000,
-		y_max          = -64,
-	})
-
-	-- Gold
-
-	minetest.register_ore({
-		ore_type       = "scatter",
-		ore            = "default:stone_with_gold",
-		wherein        = "default:stone",
+		ore            = "jt_mods:desert_stone_with_goldz",
+		wherein        = "default:desert_stone",
 		clust_scarcity = 13 * 13 * 13,
 		clust_num_ores = 5,
 		clust_size     = 3,
-		y_min          = 1025,
-		y_max          = 31000,
+		y_min          = 90,
+		y_max          = 9600,
 	})
+	
+	minetest.register_ore({
+		ore_type       = "scatter",
+		ore            = "jt_mods:desert_stone_with_ironz",
+		wherein        = "default:desert_stone",
+		clust_scarcity = 24 * 24 * 24,
+		clust_num_ores = 27,
+		clust_size     = 6,
+		y_min          = -310,
+		y_max          = 164,
+	})
+
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:stone_with_gold",
-		wherein        = "default:stone",
-		clust_scarcity = 15 * 15 * 15,
-		clust_num_ores = 3,
-		clust_size     = 2,
-		y_min          = -255,
-		y_max          = -64,
-	})
-
-	minetest.register_ore({
-		ore_type       = "scatter",
-		ore            = "default:stone_with_gold",
-		wherein        = "default:stone",
-		clust_scarcity = 13 * 13 * 13,
+		ore            = "jt_mods:desert_stone_with_copperz",
+		wherein        = "default:desert_stone",
+		clust_scarcity = 9 * 9 * 9,
 		clust_num_ores = 5,
 		clust_size     = 3,
-		y_min          = -31000,
-		y_max          = -256,
-	})
-
-	-- Mese crystal
-
-	minetest.register_ore({
-		ore_type       = "scatter",
-		ore            = "default:stone_with_mese",
-		wherein        = "default:stone",
-		clust_scarcity = 14 * 14 * 14,
-		clust_num_ores = 5,
-		clust_size     = 3,
-		y_min          = 1025,
-		y_max          = 31000,
+		y_min          = -125,
+		y_max          = 31,
 	})
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:stone_with_mese",
-		wherein        = "default:stone",
-		clust_scarcity = 18 * 18 * 18,
-		clust_num_ores = 3,
-		clust_size     = 2,
-		y_min          = -255,
-		y_max          = -64,
-	})
-
-	minetest.register_ore({
+		ore            = "jt_mods:desert_stone_with_coalz",
+		wherein        = "default:desert_stone",
+		clust_scarcity = 24 * 24 * 24,
+		clust_num_ores = 13,
+		clust_size     = 6,
+		y_min          = -310,
+		y_max          = 180,
+	})	
+	
+		minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:stone_with_mese",
-		wherein        = "default:stone",
-		clust_scarcity = 14 * 14 * 14,
-		clust_num_ores = 5,
-		clust_size     = 3,
-		y_min          = -31000,
-		y_max          = -256,
-	})
-
-	-- Diamond
-
-	minetest.register_ore({
-		ore_type       = "scatter",
-		ore            = "default:stone_with_diamond",
-		wherein        = "default:stone",
-		clust_scarcity = 15 * 15 * 15,
-		clust_num_ores = 4,
-		clust_size     = 3,
-		y_min          = 1025,
-		y_max          = 31000,
-	})
-
-	minetest.register_ore({
-		ore_type       = "scatter",
-		ore            = "default:stone_with_diamond",
-		wherein        = "default:stone",
+		ore            = "jt_mods:desert_stone_with_diamondz",
+		wherein        = "default:desert_stone",
 		clust_scarcity = 17 * 17 * 17,
-		clust_num_ores = 4,
+		clust_num_ores = 2,
 		clust_size     = 3,
-		y_min          = -255,
-		y_max          = -128,
+		y_min          = 90,
+		y_max          = 2128,
 	})
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "default:stone_with_diamond",
-		wherein        = "default:stone",
-		clust_scarcity = 15 * 15 * 15,
-		clust_num_ores = 4,
-		clust_size     = 3,
-		y_min          = -31000,
-		y_max          = -256,
-	})
-
-	-- Mese block
-
-	minetest.register_ore({
-		ore_type       = "scatter",
-		ore            = "default:mese",
-		wherein        = "default:stone",
-		clust_scarcity = 36 * 36 * 36,
+		ore            = "jt_mods:desert_stone_with_meatz",
+		wherein        = "default:desert_stone",
+		clust_scarcity = 24 * 24 * 24,
 		clust_num_ores = 3,
-		clust_size     = 2,
-		y_min          = 1025,
-		y_max          = 31000,
+		clust_size     = 6,
+		y_min          = -10,
+		y_max          = 5,
 	})
-
-	minetest.register_ore({
-		ore_type       = "scatter",
-		ore            = "default:mese",
-		wherein        = "default:stone",
-		clust_scarcity = 36 * 36 * 36,
-		clust_num_ores = 3,
-		clust_size     = 2,
-		y_min          = -31000,
-		y_max          = -1024,
-	})
-end
-
-
-
---
 -- Register biomes
 --
 
@@ -406,7 +95,7 @@ function default.register_biomes()
 		node_dust = "default:stone",
 		node_top = "default:stone",
 		depth_top = 1,
-		node_filler = "default:air",
+		node_filler = "default:stone",
 		depth_filler = 3,
 		node_stone = "default:stone",
 		node_water_top = "default:stone",
@@ -486,7 +175,7 @@ function default.register_biomes()
 		--node_dust = "",
 		node_top = "default:stone",
 		depth_top = 1,
-		node_filler = "default:air",
+		node_filler = "default:stone",
 		depth_filler = 3,
 		--node_stone = "",
 		--node_water_top = "",
@@ -569,7 +258,7 @@ function default.register_biomes()
 		--node_dust = "",
 		node_top = "default:stone",
 		depth_top = 1,
-		node_filler = "default:air",
+		node_filler = "default:stone",
 		depth_filler = 2,
 		--node_stone = "",
 		--node_water_top = "",
@@ -589,7 +278,7 @@ function default.register_biomes()
 		--node_dust = "",
 		node_top = "default:stone",
 		depth_top = 1,
-		node_filler = "default:air",
+		node_filler = "default:stone",
 		depth_filler = 3,
 		--node_stone = "",
 		--node_water_top = "",
@@ -610,7 +299,7 @@ function default.register_biomes()
 		--node_dust = "",
 		node_top = "default:stone",
 		depth_top = 1,
-		node_filler = "default:air",
+		node_filler = "default:stone",
 		depth_filler = 3,
 		--node_stone = "",
 		--node_water_top = "",
@@ -630,7 +319,7 @@ function default.register_biomes()
 		--node_dust = "",
 		node_top = "default:stone",
 		depth_top = 1,
-		node_filler = "default:air",
+		node_filler = "default:stone",
 		depth_filler = 3,
 		--node_stone = "",
 		--node_water_top = "",
@@ -691,7 +380,7 @@ function default.register_biomes()
 		--node_dust = "",
 		node_top = "default:stone",
 		depth_top = 1,
-		node_filler = "default:air",
+		node_filler = "default:stone",
 		depth_filler = 2,
 		node_stone = "default:stone",
 		--node_water_top = "",
@@ -711,7 +400,7 @@ function default.register_biomes()
 		--node_dust = "",
 		node_top = "default:stone",
 		depth_top = 1,
-		node_filler = "default:air",
+		node_filler = "default:stone",
 		depth_filler = 3,
 		node_stone = "default:stone",
 		--node_water_top = "",
@@ -732,7 +421,7 @@ function default.register_biomes()
 		--node_dust = "",
 		node_top = "default:stone",
 		depth_top = 1,
-		node_filler = "default:air",
+		node_filler = "default:stone",
 		depth_filler = 3,
 		--node_stone = "",
 		--node_water_top = "",
@@ -752,7 +441,7 @@ function default.register_biomes()
 		--node_dust = "",
 		node_top = "default:stone",
 		depth_top = 1,
-		node_filler = "default:air",
+		node_filler = "default:stone",
 		depth_filler = 3,
 		--node_stone = "",
 		--node_water_top = "",
@@ -772,7 +461,7 @@ function default.register_biomes()
 		--node_dust = "",
 		node_top = "default:stone",
 		depth_top = 1,
-		node_filler = "default:air",
+		node_filler = "default:stone",
 		depth_filler = 3,
 		--node_stone = "",
 		--node_water_top = "",
@@ -814,7 +503,7 @@ function default.register_biomes()
 		--node_dust = "",
 		node_top = "default:desert_stone",
 		depth_top = 1,
-		node_filler = "default:air",
+		node_filler = "default:stone",
 		depth_filler = 3,
 		node_stone = "default:desert_stone",
 		--node_water_top = "",
@@ -855,7 +544,7 @@ function default.register_biomes()
 		--node_dust = "",
 		node_top = "default:desert_stone",
 		depth_top = 1,
-		node_filler = "default:air",
+		node_filler = "default:stone",
 		depth_filler = 3,
 		--node_stone = "",
 		--node_water_top = "",
@@ -875,7 +564,7 @@ function default.register_biomes()
 		--node_dust = "",
 		node_top = "default:stone",
 		depth_top = 1,
-		node_filler = "default:air",
+		node_filler = "default:stone",
 		depth_filler = 3,
 		--node_stone = "",
 		--node_water_top = "",
@@ -896,7 +585,7 @@ function default.register_biomes()
 		--node_dust = "",
 		node_top = "default:desert_stone",
 		depth_top = 1,
-		node_filler = "default:air",
+		node_filler = "default:stone",
 		depth_filler = 3,
 		--node_stone = "",
 		--node_water_top = "",
@@ -916,7 +605,7 @@ function default.register_biomes()
 		--node_dust = "",
 		node_top = "default:desert_stone",
 		depth_top = 1,
-		node_filler = "default:air",
+		node_filler = "default:stone",
 		depth_filler = 3,
 		--node_stone = "",
 		--node_water_top = "",
@@ -936,7 +625,7 @@ function default.register_biomes()
 		--node_dust = "",
 		node_top = "default:stone",
 		depth_top = 1,
-		node_filler = "default:air",
+		node_filler = "default:stone",
 		depth_filler = 3,
 		--node_stone = "",
 		--node_water_top = "",
