@@ -1,15 +1,16 @@
-Minetest Game mod: boats
-========================
-See license.txt for license information.
+Minetest 0.4 mod: boats
+=======================
+by PilzAdam, slightly modified for NeXt
 
-Authors of source code
-----------------------
-Originally by PilzAdam (MIT)
-Various Minetest developers and contributors (MIT)
+License of source code:
+-----------------------
+WTFPL
 
-Authors of media (textures and model)
--------------------------------------
-Textures: Zeg9 (CC BY-SA 3.0)
-Model: thetoon and Zeg9 (CC BY-SA 3.0),
-  modified by PavelS(SokolovPavel) (CC BY-SA 3.0),
-  modified by sofar (CC BY-SA 3.0)
+License of media (textures and sounds):
+---------------------------------------
+WTFPL
+
+Authors of media files:
+-----------------------
+textures: Zeg9
+model: thetoon and Zeg9, modified by PavelS(SokolovPavel)

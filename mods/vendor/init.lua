@@ -28,12 +28,12 @@ minetest.register_alias("smartshop:shop", "vendor:vendor")
 
 minetest.register_node("vendor:vendor", {
 	description = "Vending Machine",
-	tile_images ={"vendor_side.png", "vendor_side.png", "vendor_side.png",
+	tiles ={"vendor_side.png", "vendor_side.png", "vendor_side.png",
 		"vendor_side.png", "vendor_side.png", "vendor_vendor_front.png"},
 	paramtype = "light",
 	paramtype2 = "facedir",
 	groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
-
+	sounds = default.node_sound_metal_defaults(),
 	after_place_node = vendor.after_place_node,
 	can_dig = vendor.can_dig,
 	on_receive_fields = vendor.on_receive_fields,
@@ -44,12 +44,12 @@ minetest.register_node("vendor:vendor", {
 
 minetest.register_node("vendor:depositor", {
 	description = "Depositing Machine",
-	tile_images ={"vendor_side.png", "vendor_side.png", "vendor_side.png",
+	tiles ={"vendor_side.png", "vendor_side.png", "vendor_side.png",
 		"vendor_side.png", "vendor_side.png", "vendor_depositor_front.png"},
 	paramtype = "light",
 	paramtype2 = "facedir",
 	groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
-
+	sounds = default.node_sound_metal_defaults(),
 	after_place_node = vendor.after_place_node,
 	can_dig = vendor.can_dig,
 	on_receive_fields = vendor.on_receive_fields,

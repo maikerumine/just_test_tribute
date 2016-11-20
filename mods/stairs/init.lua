@@ -23,7 +23,7 @@ stairs.wool = default.node_sound_wool_defaults() -- Xanadu only
 --local lanp  = default.LIGHT_MAX,
 
 -- Node will be called stairs:stair_<subname>
-function stairs.register_stair(subname, recipeitem, groups, images, description, snds, alpha,lamp)
+function stairs.register_stair(subname, recipeitem, groups, images, description, snds, alpha)
 	groups.stair = 1
 	minetest.register_node(":stairs:stair_" .. subname, {
 		description = description,
@@ -35,8 +35,6 @@ function stairs.register_stair(subname, recipeitem, groups, images, description,
 		paramtype2 = "facedir",
 		is_ground_content = false,
 		use_texture_alpha = alpha,
-		light_source = lamp,
-		--light_source =14,
 		--light_source = default.LIGHT_MAX,
 		groups = groups,
 		sounds = snds,
@@ -93,7 +91,7 @@ function stairs.register_stair(subname, recipeitem, groups, images, description,
 end
 
 -- Node will be called stairs:slab_<subname>
-function stairs.register_slab(subname, recipeitem, groups, images, description, snds, alpha, lamp)
+function stairs.register_slab(subname, recipeitem, groups, images, description, snds, alpha)
 	groups.slab = 1
 	minetest.register_node(":stairs:slab_" .. subname, {
 		description = description,
@@ -145,7 +143,7 @@ end
 ]]
 --
 -- Node will be called stairs:slab1<subname>
-function stairs.register_slab1(subname, recipeitem, groups, images, description, snds, alpha, lamp)
+function stairs.register_slab1(subname, recipeitem, groups, images, description, snds, alpha)
 	groups.slab = 1
 	minetest.register_node(":stairs:slab1_" .. subname, {
 		description = description,
@@ -184,7 +182,7 @@ function stairs.register_slab1(subname, recipeitem, groups, images, description,
 end
 
 -- Node will be called stairs:corner_<subname>
-function stairs.register_corner(subname, recipeitem, groups, images, description, snds, alpha, lamp)
+function stairs.register_corner(subname, recipeitem, groups, images, description, snds, alpha)
 	minetest.register_node(":stairs:corner_" .. subname, {
 		description = description,
 		drawtype = "nodebox",
@@ -225,7 +223,7 @@ function stairs.register_corner(subname, recipeitem, groups, images, description
 end
 
 -- Node will be called stairs:invcorner_<subname>
-function stairs.register_invcorner(subname, recipeitem, groups, images, description, snds, alpha, lamp)
+function stairs.register_invcorner(subname, recipeitem, groups, images, description, snds, alpha)
 	minetest.register_node(":stairs:invcorner_" .. subname, {
 		description = description,
 		drawtype = "nodebox",
@@ -268,7 +266,7 @@ function stairs.register_invcorner(subname, recipeitem, groups, images, descript
 end
 --[[
 -- Node will be called stairs:slope_<subname>
-function stairs.register_slope(subname, recipeitem, groups, images, description, snds, alpha,lamp)
+function stairs.register_slope(subname, recipeitem, groups, images, description, snds, alpha)
 	groups.slab = 1
 	minetest.register_node(":stairs:slope_" .. subname, {
 		description = description,
@@ -319,10 +317,10 @@ end
 ]]
 -- Nodes will be called stairs:{stair,slab}_<subname>
 function stairs.register_stair_and_slab(subname, recipeitem, groups, images,
-		desc_stair, desc_slab, sounds, alpha,lamp)
-	stairs.register_stair(subname, recipeitem, groups, images, desc_stair, sounds, alpha,lamp)
-	stairs.register_slab(subname, recipeitem, groups, images, desc_slab, sounds, alpha,lamp)
-	stairs.register_slab1(subname, recipeitem, groups, images, desc_slab, sounds, alpha,lamp)
+		desc_stair, desc_slab, sounds, alpha)
+	stairs.register_stair(subname, recipeitem, groups, images, desc_stair, sounds, alpha)
+	stairs.register_slab(subname, recipeitem, groups, images, desc_slab, sounds, alpha)
+	stairs.register_slab1(subname, recipeitem, groups, images, desc_slab, sounds, alpha)
 end
 
 -- Nodes will be called stairs:{stair,slab,corner,invcorner}_<subname>
@@ -533,7 +531,7 @@ stairs.register_all("obsidian_glass", "default:obsidian_glass",
 	{"default_obsidian_glass.png"},
 	"Obsidian Glass",
 	stairs.glass)
-	
+--[[	
 --function stairs.register_all(subname, recipeitem, groups, images, desc, snds, alpha,light)
 stairs.register_all("meselamp", "default:meselamp",
 	{cracky = 3, oddly_breakable_by_hand = 3,not_in_craft_guide=1},
@@ -543,15 +541,15 @@ stairs.register_all("meselamp", "default:meselamp",
 	"0,0,0",
 	"14"
 	)
-	
---[[
---function stairs.register_all(subname, recipeitem, groups, images, desc, snds, alpha,lamp)
+	]]
+
+--function stairs.register_all(subname, recipeitem, groups, images, desc, snds, alpha)
 stairs.register_all("meselamp", "default:meselamp",
 	{cracky = 3, oddly_breakable_by_hand = 3,not_in_craft_guide=1},
 	{"default_meselamp.png"},
 	"Meselamp",
 	stairs.glass)
-	]]
+	
 	
 	
 	

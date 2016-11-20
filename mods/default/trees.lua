@@ -17,7 +17,7 @@ function default.can_grow(pos)
 		return false
 	end
 	local light_level = minetest.get_node_light(pos)
-	if not light_level or light_level < 10 then
+	if not light_level or light_level < 13 then
 		return false
 	end
 	return true
@@ -37,7 +37,7 @@ end
 function default.grow_sapling(pos)
 	if not default.can_grow(pos) then
 		-- try a bit later again
-		minetest.get_node_timer(pos):start(math.random(2, 6))
+		minetest.get_node_timer(pos):start(math.random(240, 600))
 		return
 	end
 
@@ -426,7 +426,7 @@ function default.grow_new_aspen_tree(pos)
 		path, "0", nil, false)
 end
 
---[[
+
 --
 -- Sapling 'on place' function to check protection of node and resulting tree volume
 --
@@ -475,4 +475,3 @@ function default.sapling_on_place(itemstack, placer, pointed_thing,
 
 	return itemstack
 end
-]]

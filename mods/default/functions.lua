@@ -426,7 +426,7 @@ minetest.register_abm({
 --
 -- Moss growth on cobble near water
 --
---[[
+
 minetest.register_abm({
 	label = "Moss growth",
 	nodenames = {"default:cobble", "stairs:slab_cobble", "stairs:stair_cobble"},
@@ -444,7 +444,7 @@ minetest.register_abm({
 		end
 	end
 })
-]]
+
 
 --
 -- Checks if specified volume intersects a protected volume

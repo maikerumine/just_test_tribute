@@ -88,10 +88,13 @@ paramat (CC BY-SA 3.0):
   default_pinetree_top.png
   default_pinewood.png
   default_acacia_leaves.png
+  default_acacia_leaves_simple.png
   default_acacia_sapling.png
   default_acacia_tree.png
   default_acacia_tree_top.png
   default_acacia_wood.png
+  default_acacia_bush_stem.png
+  default_bush_stem.png
   default_junglewood.png
   default_jungletree_top.png
   default_sandstone_brick.png
@@ -136,6 +139,9 @@ BlockMen (CC BY-SA 3.0):
   default_meselamp.png
   bubble.png
   gui_*.png
+
+Wuzzy (CC BY-SA 3.0):
+  default_bookshelf_slot.png (based on default_book.png)
 
 sofar (CC BY-SA 3.0):
   default_book_written.png, based on default_book.png
@@ -195,7 +201,6 @@ Glass breaking sounds (CC BY 3.0):
 sonictechtonic (CC BY 3.0):
 https://www.freesound.org/people/sonictechtonic/sounds/241872/
   player_damage.ogg
-  player_falling_damage.ogg
 
 Mito551 (sounds) (CC BY-SA 3.0):
   default_dig_choppy.ogg

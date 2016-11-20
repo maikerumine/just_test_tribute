@@ -53,7 +53,7 @@ function default.register_ores()
 		ore_type        = "blob",
 		ore             = "default:clay",
 		wherein         = {"default:sand"},
-		clust_scarcity  = 26 * 26 * 26,
+		clust_scarcity  = 16 * 16 * 16,
 		clust_size      = 5,
 		y_min           = -15,
 		y_max           = 0,
@@ -75,7 +75,7 @@ function default.register_ores()
 		ore             = "default:sand",
 		wherein         = {"default:stone", "default:sandstone",
 			"default:desert_stone"},
-		clust_scarcity  = 26 * 26 * 26,
+		clust_scarcity  = 16 * 16 * 16,
 		clust_size      = 5,
 		y_min           = -31,
 		y_max           = 0,
@@ -96,7 +96,7 @@ function default.register_ores()
 		ore_type        = "blob",
 		ore             = "default:dirt",
 		wherein         = {"default:stone"},
-		clust_scarcity  = 36 * 36 * 36,
+		clust_scarcity  = 16 * 16 * 16,
 		clust_size      = 5,
 		y_min           = -31,
 		y_max           = 31000,
@@ -117,7 +117,7 @@ function default.register_ores()
 		ore_type        = "blob",
 		ore             = "default:gravel",
 		wherein         = {"default:stone"},
-		clust_scarcity  = 36 * 36 * 36,
+		clust_scarcity  = 16 * 16 * 16,
 		clust_size      = 5,
 		y_min           = -31000,
 		y_max           = 31000,
@@ -178,7 +178,7 @@ function default.register_ores()
 		clust_scarcity = 9 * 9 * 9,
 		clust_num_ores = 12,
 		clust_size     = 3,
-		y_min          = 125,
+		y_min          = 1025,
 		y_max          = 31000,
 	})
 
@@ -213,7 +213,7 @@ function default.register_ores()
 		clust_scarcity = 9 * 9 * 9,
 		clust_num_ores = 5,
 		clust_size     = 3,
-		y_min          = 125,
+		y_min          = 1025,
 		y_max          = 31000,
 	})
 
@@ -283,7 +283,7 @@ function default.register_ores()
 		clust_scarcity = 14 * 14 * 14,
 		clust_num_ores = 5,
 		clust_size     = 3,
-		y_min          = 125,
+		y_min          = 1025,
 		y_max          = 31000,
 	})
 
@@ -318,7 +318,7 @@ function default.register_ores()
 		clust_scarcity = 15 * 15 * 15,
 		clust_num_ores = 4,
 		clust_size     = 3,
-		y_min          = 155,
+		y_min          = 1025,
 		y_max          = 31000,
 	})
 
@@ -353,7 +353,7 @@ function default.register_ores()
 		clust_scarcity = 36 * 36 * 36,
 		clust_num_ores = 3,
 		clust_size     = 2,
-		y_min          = 125,
+		y_min          = 1025,
 		y_max          = 31000,
 	})
 

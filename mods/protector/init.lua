@@ -285,7 +285,7 @@ minetest.register_node("protector:protect", {
 		"protector_top.png",
 		"protector_side.png"
 	},
-	sounds = default.node_sound_stone_defaults(),
+	sounds = default.node_sound_metal_defaults(),
 	groups = {dig_immediate = 2, unbreakable = 1},
 	is_ground_content = false,
 	paramtype = "light",
@@ -362,7 +362,7 @@ minetest.register_node("protector:protect2", {
 	tiles = {"protector_logo.png"},
 	wield_image = "protector_logo.png",
 	inventory_image = "protector_logo.png",
-	sounds = default.node_sound_stone_defaults(),
+	sounds = default.node_sound_metal_defaults(),
 	groups = {dig_immediate = 2, unbreakable = 1},
 	paramtype = 'light',
 	paramtype2 = "wallmounted",

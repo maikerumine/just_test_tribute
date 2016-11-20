@@ -1,2 +1,0 @@
-name = "Man in Red Shirt",
-author = "",

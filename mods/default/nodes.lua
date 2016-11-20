@@ -131,6 +131,11 @@ default:dry_grass_3
 default:dry_grass_4
 default:dry_grass_5
 
+default:bush_stem
+default:bush_leaves
+default:acacia_bush_stem
+default:acacia_bush_leaves
+
 Corals
 ------
 
@@ -437,7 +442,6 @@ minetest.register_node("default:snow", {
 	paramtype = "light",
 	buildable_to = true,
 	floodable = true,
-	walkable = false,
 	drawtype = "nodebox",
 	node_box = {
 		type = "fixed",
@@ -469,6 +473,13 @@ minetest.register_node("default:snowblock", {
 		dug = {name = "default_snow_footstep", gain = 0.2},
 		dig = {name = "default_snow_footstep", gain = 0.2}
 	}),
+
+	on_construct = function(pos)
+		pos.y = pos.y - 1
+		if minetest.get_node(pos).name == "default:dirt_with_grass" then
+			minetest.set_node(pos, {name = "default:dirt_with_snow"})
+		end
+	end,
 })
 
 minetest.register_node("default:ice", {
@@ -518,16 +529,16 @@ minetest.register_node("default:sapling", {
 	on_timer = default.grow_sapling,
 	selection_box = {
 		type = "fixed",
-		fixed = {-0.3, -0.5, -0.3, 0.3, 0.35, 0.3}
+		fixed = {-4 / 16, -0.5, -4 / 16, 4 / 16, 7 / 16, 4 / 16}
 	},
 	groups = {snappy = 2, dig_immediate = 3, flammable = 2,
 		attached_node = 1, sapling = 1},
 	sounds = default.node_sound_leaves_defaults(),
 
 	on_construct = function(pos)
-		minetest.get_node_timer(pos):start(math.random(60,234))
+		minetest.get_node_timer(pos):start(math.random(2400,4800))
 	end,
---[[
+
 	on_place = function(itemstack, placer, pointed_thing)
 		itemstack = default.sapling_on_place(itemstack, placer, pointed_thing,
 			"default:sapling",
@@ -540,14 +551,12 @@ minetest.register_node("default:sapling", {
 
 		return itemstack
 	end,
-	]]
 })
 
 minetest.register_node("default:leaves", {
 	description = "Leaves",
 	drawtype = "allfaces_optional",
 	waving = 1,
-	visual_scale = 1.3,
 	tiles = {"default_leaves.png"},
 	special_tiles = {"default_leaves_simple.png"},
 	paramtype = "light",
@@ -585,7 +594,7 @@ minetest.register_node("default:apple", {
 	is_ground_content = false,
 	selection_box = {
 		type = "fixed",
-		fixed = {-0.2, -0.5, -0.2, 0.2, 0, 0.2}
+		fixed = {-3 / 16, -7 / 16, -3 / 16, 3 / 16, 4 / 16, 3 / 16}
 	},
 	groups = {fleshy = 3, dig_immediate = 3, flammable = 2,
 		leafdecay = 3, leafdecay_drop = 1},
@@ -626,7 +635,6 @@ minetest.register_node("default:jungleleaves", {
 	description = "Jungle Leaves",
 	drawtype = "allfaces_optional",
 	waving = 1,
-	visual_scale = 1.3,
 	tiles = {"default_jungleleaves.png"},
 	special_tiles = {"default_jungleleaves_simple.png"},
 	paramtype = "light",
@@ -657,16 +665,16 @@ minetest.register_node("default:junglesapling", {
 	on_timer = default.grow_sapling,
 	selection_box = {
 		type = "fixed",
-		fixed = {-0.3, -0.5, -0.3, 0.3, 0.35, 0.3}
+		fixed = {-4 / 16, -0.5, -4 / 16, 4 / 16, 7 / 16, 4 / 16}
 	},
 	groups = {snappy = 2, dig_immediate = 3, flammable = 2,
 		attached_node = 1, sapling = 1},
 	sounds = default.node_sound_leaves_defaults(),
 
 	on_construct = function(pos)
-		minetest.get_node_timer(pos):start(math.random(60,234))
+		minetest.get_node_timer(pos):start(math.random(2400,4800))
 	end,
---[[
+
 	on_place = function(itemstack, placer, pointed_thing)
 		itemstack = default.sapling_on_place(itemstack, placer, pointed_thing,
 			"default:junglesapling",
@@ -679,7 +687,6 @@ minetest.register_node("default:junglesapling", {
 
 		return itemstack
 	end,
-	]]
 })
 
 
@@ -708,7 +715,6 @@ minetest.register_node("default:pine_wood", {
 minetest.register_node("default:pine_needles",{
 	description = "Pine Needles",
 	drawtype = "allfaces_optional",
-	visual_scale = 1.3,
 	tiles = {"default_pine_needles.png"},
 	waving = 1,
 	paramtype = "light",
@@ -739,7 +745,7 @@ minetest.register_node("default:pine_sapling", {
 	on_timer = default.grow_sapling,
 	selection_box = {
 		type = "fixed",
-		fixed = {-0.3, -0.5, -0.3, 0.3, 0.35, 0.3}
+		fixed = {-4 / 16, -0.5, -4 / 16, 4 / 16, 7 / 16, 4 / 16}
 	},
 	groups = {snappy = 2, dig_immediate = 3, flammable = 3,
 		attached_node = 1, sapling = 1},
@@ -748,7 +754,7 @@ minetest.register_node("default:pine_sapling", {
 	on_construct = function(pos)
 		minetest.get_node_timer(pos):start(math.random(2400,4800))
 	end,
---[[
+
 	on_place = function(itemstack, placer, pointed_thing)
 		itemstack = default.sapling_on_place(itemstack, placer, pointed_thing,
 			"default:pine_sapling",
@@ -761,7 +767,6 @@ minetest.register_node("default:pine_sapling", {
 
 		return itemstack
 	end,
-	]]
 })
 
 
@@ -790,8 +795,8 @@ minetest.register_node("default:acacia_wood", {
 minetest.register_node("default:acacia_leaves", {
 	description = "Acacia Leaves",
 	drawtype = "allfaces_optional",
-	visual_scale = 1.3,
 	tiles = {"default_acacia_leaves.png"},
+	special_tiles = {"default_acacia_leaves_simple.png"},
 	waving = 1,
 	paramtype = "light",
 	is_ground_content = false,
@@ -821,7 +826,7 @@ minetest.register_node("default:acacia_sapling", {
 	on_timer = default.grow_sapling,
 	selection_box = {
 		type = "fixed",
-		fixed = {-0.3, -0.5, -0.3, 0.3, 0.35, 0.3}
+		fixed = {-4 / 16, -0.5, -4 / 16, 4 / 16, 7 / 16, 4 / 16}
 	},
 	groups = {snappy = 2, dig_immediate = 3, flammable = 2,
 		attached_node = 1, sapling = 1},
@@ -830,7 +835,7 @@ minetest.register_node("default:acacia_sapling", {
 	on_construct = function(pos)
 		minetest.get_node_timer(pos):start(math.random(2400,4800))
 	end,
---[[
+
 	on_place = function(itemstack, placer, pointed_thing)
 		itemstack = default.sapling_on_place(itemstack, placer, pointed_thing,
 			"default:acacia_sapling",
@@ -843,7 +848,6 @@ minetest.register_node("default:acacia_sapling", {
 
 		return itemstack
 	end,
-	]]
 })
 
 minetest.register_node("default:aspen_tree", {
@@ -871,7 +875,6 @@ minetest.register_node("default:aspen_wood", {
 minetest.register_node("default:aspen_leaves", {
 	description = "Aspen Leaves",
 	drawtype = "allfaces_optional",
-	visual_scale = 1.3,
 	tiles = {"default_aspen_leaves.png"},
 	waving = 1,
 	paramtype = "light",
@@ -902,7 +905,7 @@ minetest.register_node("default:aspen_sapling", {
 	on_timer = default.grow_sapling,
 	selection_box = {
 		type = "fixed",
-		fixed = {-0.3, -0.5, -0.3, 0.3, 0.35, 0.3}
+		fixed = {-3 / 16, -0.5, -3 / 16, 3 / 16, 0.5, 3 / 16}
 	},
 	groups = {snappy = 2, dig_immediate = 3, flammable = 3,
 		attached_node = 1, sapling = 1},
@@ -911,7 +914,7 @@ minetest.register_node("default:aspen_sapling", {
 	on_construct = function(pos)
 		minetest.get_node_timer(pos):start(math.random(2400,4800))
 	end,
---[[
+
 	on_place = function(itemstack, placer, pointed_thing)
 		itemstack = default.sapling_on_place(itemstack, placer, pointed_thing,
 			"default:aspen_sapling",
@@ -924,7 +927,6 @@ minetest.register_node("default:aspen_sapling", {
 
 		return itemstack
 	end,
-	]]
 })
 
 --
@@ -1066,7 +1068,7 @@ minetest.register_node("default:papyrus", {
 	walkable = false,
 	selection_box = {
 		type = "fixed",
-		fixed = {-0.3, -0.5, -0.3, 0.3, 0.5, 0.3}
+		fixed = {-6 / 16, -0.5, -6 / 16, 6 / 16, 0.5, 6 / 16},
 	},
 	groups = {snappy = 3, flammable = 2},
 	sounds = default.node_sound_leaves_defaults(),
@@ -1092,7 +1094,7 @@ minetest.register_node("default:dry_shrub", {
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
-		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},
+		fixed = {-5 / 16, -0.5, -5 / 16, 5 / 16, 4 / 16, 5 / 16},
 	},
 })
 
@@ -1112,7 +1114,7 @@ minetest.register_node("default:junglegrass", {
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
-		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},
+		fixed = {-7 / 16, -0.5, -7 / 16, 7 / 16, 1.19, 7 / 16},
 	},
 })
 
@@ -1133,7 +1135,7 @@ minetest.register_node("default:grass_1", {
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
-		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},
+		fixed = {-6 / 16, -0.5, -6 / 16, 6 / 16, -5 / 16, 6 / 16},
 	},
 
 	on_place = function(itemstack, placer, pointed_thing)
@@ -1163,7 +1165,7 @@ for i = 2, 5 do
 		sounds = default.node_sound_leaves_defaults(),
 		selection_box = {
 			type = "fixed",
-			fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},
+			fixed = {-6 / 16, -0.5, -6 / 16, 6 / 16, -3 / 16, 6 / 16},
 		},
 	})
 end
@@ -1185,7 +1187,7 @@ minetest.register_node("default:dry_grass_1", {
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
-		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},
+		fixed = {-6 / 16, -0.5, -6 / 16, 6 / 16, -3 / 16, 6 / 16},
 	},
 
 	on_place = function(itemstack, placer, pointed_thing)
@@ -1215,10 +1217,65 @@ for i = 2, 5 do
 		sounds = default.node_sound_leaves_defaults(),
 		selection_box = {
 			type = "fixed",
-			fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},
+			fixed = {-6 / 16, -0.5, -6 / 16, 6 / 16, -1 / 16, 6 / 16},
 		},
 	})
 end
+
+
+minetest.register_node("default:bush_stem", {
+	description = "Bush Stem",
+	drawtype = "plantlike",
+	visual_scale = 1.18,
+	tiles = {"default_bush_stem.png"},
+	inventory_image = "default_bush_stem.png",
+	wield_image = "default_bush_stem.png",
+	paramtype = "light",
+	sunlight_propagates = true,
+	groups = {choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
+	sounds = default.node_sound_wood_defaults(),
+	selection_box = {
+		type = "fixed",
+		fixed = {-7 / 16, -0.5, -7 / 16, 7 / 16, 0.54, 7 / 16},
+	},
+})
+
+minetest.register_node("default:bush_leaves", {
+	description = "Bush Leaves",
+	drawtype = "allfaces_optional",
+	waving = 1,
+	tiles = {"default_leaves_simple.png"},
+	paramtype = "light",
+	groups = {snappy = 3, flammable = 2, leaves = 1},
+	sounds = default.node_sound_leaves_defaults(),
+})
+
+minetest.register_node("default:acacia_bush_stem", {
+	description = "Acacia Bush Stem",
+	drawtype = "plantlike",
+	visual_scale = 1.18,
+	tiles = {"default_acacia_bush_stem.png"},
+	inventory_image = "default_acacia_bush_stem.png",
+	wield_image = "default_acacia_bush_stem.png",
+	paramtype = "light",
+	sunlight_propagates = true,
+	groups = {choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
+	sounds = default.node_sound_wood_defaults(),
+	selection_box = {
+		type = "fixed",
+		fixed = {-7 / 16, -0.5, -7 / 16, 7 / 16, 0.54, 7 / 16},
+	},
+})
+
+minetest.register_node("default:acacia_bush_leaves", {
+	description = "Acacia Bush Leaves",
+	drawtype = "allfaces_optional",
+	waving = 1,
+	tiles = {"default_acacia_leaves_simple.png"},
+	paramtype = "light",
+	groups = {snappy = 3, flammable = 2, leaves = 1},
+	sounds = default.node_sound_leaves_defaults(),
+})
 
 
 --
@@ -1757,6 +1814,18 @@ local bookshelf_formspec =
 	"listring[context;books]" ..
 	"listring[current_player;main]" ..
 	default.get_hotbar_bg(0,2.85)
+
+-- Inventory slots overlay
+local bx, by = 0, 0.3
+for i = 1, 16 do
+	if i == 9 then
+		bx = 0
+		by = by + 1
+	end
+	bookshelf_formspec = bookshelf_formspec ..
+		"image[" .. bx .. "," .. by .. ";1,1;default_bookshelf_slot.png]"
+	bx = bx + 1
+end
 
 minetest.register_node("default:bookshelf", {
 	description = "Bookshelf",

@@ -36,12 +36,17 @@ end
 --    inventory_image = texture of the new bucket item (ignored if itemname == nil)
 --    name = text description of the bucket item
 --    groups = (optional) groups of the bucket item, for example {water_bucket = 1}
+--    force_renew = (optional) bool. Force the liquid source to renew if it has a
+--                  source neighbour, even if defined as 'liquid_renewable = false'.
+--                  Needed to avoid creating holes in sloping rivers.
 -- This function can be called from any mod (that depends on bucket).
-function bucket.register_liquid(source, flowing, itemname, inventory_image, name, groups)
+function bucket.register_liquid(source, flowing, itemname, inventory_image, name,
+		groups, force_renew)
 	bucket.liquids[source] = {
 		source = source,
 		flowing = flowing,
 		itemname = itemname,
+		force_renew = force_renew,
 	}
 	bucket.liquids[flowing] = bucket.liquids[source]
 
@@ -110,8 +115,11 @@ minetest.register_craftitem("bucket:bucket_empty", {
 	stack_max = 99,
 	liquids_pointable = true,
 	on_use = function(itemstack, user, pointed_thing)
-		-- Must be pointing to node
-		if pointed_thing.type ~= "node" then
+		if pointed_thing.type == "object" then
+			pointed_thing.ref:punch(user, 1.0, { full_punch_interval=1.0 }, nil)
+			return user:get_wielded_item()
+		elseif pointed_thing.type ~= "node" then
+			-- do nothing if it's neither object nor node
 			return
 		end
 		-- Check if pointing to a liquid source
@@ -149,9 +157,24 @@ minetest.register_craftitem("bucket:bucket_empty", {
 
 			end
 
-			minetest.add_node(pointed_thing.under, {name="air"})
+			-- force_renew requires a source neighbour
+			local source_neighbor = false
+			if liquiddef.force_renew then
+				source_neighbor =
+					minetest.find_node_near(pointed_thing.under, 1, liquiddef.source)
+			end
+			if not (source_neighbor and liquiddef.force_renew) then
+				minetest.add_node(pointed_thing.under, {name = "air"})
+			end
 
 			return ItemStack(giving_back)
+		else
+			-- non-liquid nodes will have their on_punch triggered
+			local node_def = minetest.registered_nodes[node.name]
+			if node_def then
+				node_def.on_punch(pointed_thing.under, node, user, pointed_thing)
+			end
+			return user:get_wielded_item()
 		end
 	end,
 })
@@ -171,7 +194,8 @@ bucket.register_liquid(
 	"bucket:bucket_river_water",
 	"bucket_river_water.png",
 	"River Water Bucket",
-	{water_bucket = 1}
+	{water_bucket = 1},
+	true
 )
 
 bucket.register_liquid(
@@ -187,71 +211,5 @@ minetest.register_craft({
 	recipe = "bucket:bucket_lava",
 	burntime = 60,
 	replacements = {{"bucket:bucket_lava", "bucket:bucket_empty"}},
-})
-
-
-
-
---everamaza code 
-minetest.register_privilege("liquid", "Can place liquid source nodes.")
-minetest.register_privilege("lava", "Can use liquid igniters.")
-minetest.register_privilege("water", "Can use liquid.")
-
-
---lava bucket
-local old_lava_bucket_place = minetest.registered_items["bucket:bucket_lava"].on_place
-
-minetest.override_item("bucket:bucket_lava", {
-	on_place = function(itemstack, placer, pointed_thing)
-		if not minetest.check_player_privs(placer:get_player_name(),
-				{lava = true}) then
-			return itemstack
-		else
-			return old_lava_bucket_place(itemstack, placer, pointed_thing)
-		end
-	end,
-})
-
-
---water bucket
-local old_water_bucket_place = minetest.registered_items["bucket:bucket_water"].on_place
-
-minetest.override_item("bucket:bucket_water", {
-	on_place = function(itemstack, placer, pointed_thing)
-		if not minetest.check_player_privs(placer:get_player_name(),
-				{water = true}) then
-			return itemstack
-		else
-			return old_water_bucket_place(itemstack, placer, pointed_thing)
-		end
-	end,
-})
-
---source blocks
-minetest.override_item("default:lava_source", {
-	after_place_node = function(pos, placer, itemstack, pointed_thing)
-		if not minetest.check_player_privs(placer:get_player_name(),
-				{liquid = true, lava = true}) then
-			minetest.remove_node(pos)
-		end
-	end,
-})
-
-minetest.override_item("default:water_source", {
-	after_place_node = function(pos, placer, itemstack, pointed_thing)
-		if not minetest.check_player_privs(placer:get_player_name(),
-				{liquid = true}) then
-			minetest.remove_node(pos)
-		end
-	end,
-})
-
-minetest.override_item("default:river_water_source", {
-	after_place_node = function(pos, placer, itemstack, pointed_thing)
-		if not minetest.check_player_privs(placer:get_player_name(),
-				{liquid = true}) then
-			minetest.remove_node(pos)
-		end
-	end,
 })
 
