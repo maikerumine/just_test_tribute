@@ -17,7 +17,7 @@ function default.can_grow(pos)
 		return false
 	end
 	local light_level = minetest.get_node_light(pos)
-	if not light_level or light_level < 13 then
+	if not light_level or light_level < 10 then
 		return false
 	end
 	return true
@@ -433,6 +433,9 @@ end
 
 function default.sapling_on_place(itemstack, placer, pointed_thing,
 		sapling_name, minp_relative, maxp_relative, interval)
+		
+		
+
 	-- Position of sapling
 	local pos = pointed_thing.under
 	local node = minetest.get_node_or_nil(pos)
@@ -457,8 +460,10 @@ function default.sapling_on_place(itemstack, placer, pointed_thing,
 		minetest.record_protection_violation(pos, player_name)
 		return itemstack
 	end
+
 	-- Check tree volume for protection
-	if not default.intersects_protection(
+	--if not default.intersects_protection(
+	if default.intersects_protection(  --changed to volume does not matter.
 			vector.add(pos, minp_relative),
 			vector.add(pos, maxp_relative),
 			player_name,
@@ -474,4 +479,5 @@ function default.sapling_on_place(itemstack, placer, pointed_thing,
 	end
 
 	return itemstack
+
 end

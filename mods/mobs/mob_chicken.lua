@@ -4,12 +4,17 @@ local S = mobs.intllib
 -- Chicken by JK Murray
 
 mobs:register_mob("mobs:turkey", {
-	type = "animal",
-	passive = true,
+	type = "monster",
+	--passive =true,
+	docile_by_day = true,
+	attack_type = "dogfight",
+	pathfinding = 1,
+	reach = 2,
 	hp_min = 5,
 	hp_max = 10,
-	armor = 200,
-	collisionbox = {-0.3, -0.75, -0.3, 0.3, 0.1, 0.3},
+	armor = 90,
+	collisionbox = {-0.6, -1.5, -0.6, 0.6, 0.3, 0.6},
+	visual_size = {x=2, y=2},
 	visual = "mesh",
 	mesh = "mobs_chicken.x",
 	-- seems a lot of textures but this fixes the problem with the model
@@ -29,7 +34,8 @@ mobs:register_mob("mobs:turkey", {
 	},
 	walk_velocity = 1,
 	run_velocity = 3,
-	runaway = true,
+	damage = 1,
+	--runaway = true,
 	jump = true,
 	drops = {
 		{name = "mobs:meat_raw", chance = 1, min = 2, max = 2},
@@ -40,6 +46,7 @@ mobs:register_mob("mobs:turkey", {
 	fall_damage = 0,
 	fall_speed = -8,
 	fear_height = 5,
+	group_attack = true,
 	animation = {
 		speed_normal = 15,
 		stand_start = 0,
@@ -68,8 +75,7 @@ mobs:register_mob("mobs:turkey", {
 
 		local pos = self.object:getpos()
 
-		--minetest.add_item(pos, "mobs:egg")
-		minetest.add_item(pos, "default:snow")
+		minetest.add_item(pos, "mobs:egg")
 
 		minetest.sound_play("default_place_node_hard", {
 			pos = pos,
@@ -79,14 +85,21 @@ mobs:register_mob("mobs:turkey", {
 	end,
 })
 
-mobs:register_spawn("mobs:turkey",
-	{"default:dirt_with_grass", "ethereal:bamboo_dirt"}, 20, 10, 6000, 3, 31000, true)
+mobs:spawn({
+	name = "mobs:turkey",
+	nodes = {"default:dirt_with_grass", "ethereal:bamboo_dirt"},
+	min_light = 10,
+	chance = 15000,
+	active_object_count = 2,
+	min_height = 0,
+	day_toggle = true,
+})
 
---mobs:register_egg("mobs:chicken", S("Chicken"), "mobs_chicken_inv.png", 0)
+mobs:register_egg("mobs:turkey", S("Chicken"), "mobs_chicken_inv.png", 0)
 
 -- compatibility
 mobs:alias_mob("mobs:chicken", "mobs:chicken")
---[[
+
 -- egg entity
 
 mobs:register_arrow("mobs:egg_entity", {
@@ -125,7 +138,7 @@ mobs:register_arrow("mobs:egg_entity", {
 				return
 			end
 
-			local mob = minetest.add_entity(pos, "mobs:chicken")
+			local mob = minetest.add_entity(pos, "mobs:turkey")
 			local ent2 = mob:get_luaentity()
 
 			mob:set_properties({
@@ -202,7 +215,7 @@ end
 
 -- egg
 minetest.register_node(":mobs:egg", {
-	description = S("Chicken Egg"),
+	description = S("turkey Egg"),
 	tiles = {"mobs_chicken_egg.png"},
 	inventory_image  = "mobs_chicken_egg.png",
 	visual_scale = 0.7,
@@ -224,7 +237,7 @@ minetest.register_node(":mobs:egg", {
 	end,
 	on_use = mobs_shoot_egg
 })
-
+--[[
 -- fried egg
 minetest.register_craftitem(":mobs:chicken_egg_fried", {
 description = S("Fried Egg"),

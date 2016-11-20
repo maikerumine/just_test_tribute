@@ -30,7 +30,8 @@ mobs:register_mob("mobs:just_test_griefer", {
 	run_velocity = 3,
 	damage = 2,
 	drops = {
-		{name = "jt_mods:griefer_soul",
+		--{name = "jt_mods:griefer_soul",
+		{name = "default:apple",
 		chance = 7,
 		min = 0,
 		max = 1,},

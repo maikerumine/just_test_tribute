@@ -20,10 +20,10 @@ stairs.leaves = default.node_sound_leaves_defaults()
 stairs.metal = default.node_sound_metal_defaults()
 stairs.wool = default.node_sound_wool_defaults() -- Xanadu only
 --stairs.wool = stairs.leaves
---local lanp  = default.LIGHT_MAX,
 
+local lamp = light_source
 -- Node will be called stairs:stair_<subname>
-function stairs.register_stair(subname, recipeitem, groups, images, description, snds, alpha)
+function stairs.register_stair(subname, recipeitem, groups, images, description, snds, alpha,lamp)
 	groups.stair = 1
 	minetest.register_node(":stairs:stair_" .. subname, {
 		description = description,
@@ -35,7 +35,7 @@ function stairs.register_stair(subname, recipeitem, groups, images, description,
 		paramtype2 = "facedir",
 		is_ground_content = false,
 		use_texture_alpha = alpha,
-		--light_source = default.LIGHT_MAX,
+		light_source = lamp,
 		groups = groups,
 		sounds = snds,
 --		node_box = {
@@ -91,7 +91,7 @@ function stairs.register_stair(subname, recipeitem, groups, images, description,
 end
 
 -- Node will be called stairs:slab_<subname>
-function stairs.register_slab(subname, recipeitem, groups, images, description, snds, alpha)
+function stairs.register_slab(subname, recipeitem, groups, images, description, snds, alpha,lamp)
 	groups.slab = 1
 	minetest.register_node(":stairs:slab_" .. subname, {
 		description = description,
@@ -101,7 +101,7 @@ function stairs.register_slab(subname, recipeitem, groups, images, description, 
 		paramtype2 = "facedir",
 		is_ground_content = false,
 		use_texture_alpha = alpha,
-		light_source = light,
+		light_source = lamp,
 		groups = groups,
 		sounds = snds,
 		node_box = {
@@ -143,7 +143,7 @@ end
 ]]
 --
 -- Node will be called stairs:slab1<subname>
-function stairs.register_slab1(subname, recipeitem, groups, images, description, snds, alpha)
+function stairs.register_slab1(subname, recipeitem, groups, images, description, snds, alpha,lamp)
 	groups.slab = 1
 	minetest.register_node(":stairs:slab1_" .. subname, {
 		description = description,
@@ -153,8 +153,7 @@ function stairs.register_slab1(subname, recipeitem, groups, images, description,
 		paramtype2 = "facedir",
 		is_ground_content = false,
 		use_texture_alpha = alpha,
-		--light_source =14,
-		light_source =light,
+		light_source =lamp,
 		groups = groups,
 		sounds = snds,
 		node_box = {
@@ -182,7 +181,7 @@ function stairs.register_slab1(subname, recipeitem, groups, images, description,
 end
 
 -- Node will be called stairs:corner_<subname>
-function stairs.register_corner(subname, recipeitem, groups, images, description, snds, alpha)
+function stairs.register_corner(subname, recipeitem, groups, images, description, snds, alpha,lamp)
 	minetest.register_node(":stairs:corner_" .. subname, {
 		description = description,
 		drawtype = "nodebox",
@@ -223,7 +222,7 @@ function stairs.register_corner(subname, recipeitem, groups, images, description
 end
 
 -- Node will be called stairs:invcorner_<subname>
-function stairs.register_invcorner(subname, recipeitem, groups, images, description, snds, alpha)
+function stairs.register_invcorner(subname, recipeitem, groups, images, description, snds, alpha,lamp)
 	minetest.register_node(":stairs:invcorner_" .. subname, {
 		description = description,
 		drawtype = "nodebox",
@@ -266,7 +265,7 @@ function stairs.register_invcorner(subname, recipeitem, groups, images, descript
 end
 --[[
 -- Node will be called stairs:slope_<subname>
-function stairs.register_slope(subname, recipeitem, groups, images, description, snds, alpha)
+function stairs.register_slope(subname, recipeitem, groups, images, description, snds, alpha,lamp)
 	groups.slab = 1
 	minetest.register_node(":stairs:slope_" .. subname, {
 		description = description,
@@ -278,7 +277,7 @@ function stairs.register_slope(subname, recipeitem, groups, images, description,
 		paramtype2 = "facedir",
 		is_ground_content = false,
 		use_texture_alpha = alpha,
-		light_source = light,
+		light_source = lamp,
 		groups = groups,
 		sounds = snds,
 		selection_box = {
@@ -317,10 +316,10 @@ end
 ]]
 -- Nodes will be called stairs:{stair,slab}_<subname>
 function stairs.register_stair_and_slab(subname, recipeitem, groups, images,
-		desc_stair, desc_slab, sounds, alpha)
-	stairs.register_stair(subname, recipeitem, groups, images, desc_stair, sounds, alpha)
-	stairs.register_slab(subname, recipeitem, groups, images, desc_slab, sounds, alpha)
-	stairs.register_slab1(subname, recipeitem, groups, images, desc_slab, sounds, alpha)
+		desc_stair, desc_slab, sounds, alpha,lamp)
+	stairs.register_stair(subname, recipeitem, groups, images, desc_stair, sounds, alpha,lamp)
+	stairs.register_slab(subname, recipeitem, groups, images, desc_slab, sounds, alpha,lamp)
+	stairs.register_slab1(subname, recipeitem, groups, images, desc_slab, sounds, alpha,lamp)
 end
 
 -- Nodes will be called stairs:{stair,slab,corner,invcorner}_<subname>
@@ -446,19 +445,19 @@ stairs.register_all("steelblock", "default:steelblock",
 	{cracky = 1, level = 2,not_in_craft_guide=1},
 	{"default_steel_block.png"},
 	"Steel",
-	stairs.stone)
+	stairs.metal)
 
 stairs.register_all("copperblock", "default:copperblock",
 	{cracky = 1, level = 2,not_in_craft_guide=1},
 	{"default_copper_block.png"},
 	"Copper",
-	stairs.stone)
+	stairs.metal)
 
 stairs.register_all("bronzeblock", "default:bronzeblock",
 	{cracky = 1, level = 2,not_in_craft_guide=1},
 	{"default_bronze_block.png"},
 	"Bronze",
-	stairs.stone)
+	stairs.metal)
 
 stairs.register_all("mese", "default:mese",
 	{cracky = 1, level = 2,not_in_craft_guide=1},
@@ -673,19 +672,19 @@ stairs.register_all("tin_block", "moreores:tin_block",
 	grp,
 	{"moreores_tin_block.png"},
 	"Tin",
-	stairs.stone)
+	stairs.metal)
 
 stairs.register_all("silver_block", "moreores:silver_block",
 	grp,
 	{"moreores_silver_block.png"},
 	"Silver",
-	stairs.stone)
+	stairs.metal)
 
 stairs.register_all("mithril_block", "moreores:mithril_block",
 	grp,
 	{"moreores_mithril_block.png"},
 	"Mithril",
-	stairs.stone)
+	stairs.metal)
 
 end
 
@@ -1003,7 +1002,7 @@ stairs.register_all("infinium", "es:infiniumblock",
 	grp,
 	{"infinium_block.png"},
 	"Infinium Block",
-	stairs.stone)
+	stairs.metal)
 	
 stairs.register_all("purpellium", "es:purpelliumblock",
 	grp,
@@ -1021,7 +1020,7 @@ stairs.register_all("boneblock", "es:boneblock",
 	{crumbly = 2,oddly_breakable_by_hand=1,not_in_craft_guide=1},
 	{"bones_front.png"},
 	"Bone Block",
-	stairs.stone)
+	stairs.metal)
 
 stairs.register_all("messymese", "es:messymese",
 	{crumbly = 2,oddly_breakable_by_hand=1,not_in_craft_guide=1},
