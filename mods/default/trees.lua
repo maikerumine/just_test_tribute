@@ -462,22 +462,24 @@ function default.sapling_on_place(itemstack, placer, pointed_thing,
 	end
 
 	-- Check tree volume for protection
-	--if not default.intersects_protection(
-	if default.intersects_protection(  --changed to volume does not matter.
+	--[[
+	if not default.intersects_protection(
 			vector.add(pos, minp_relative),
 			vector.add(pos, maxp_relative),
 			player_name,
 			interval) then
+			]]
 		minetest.set_node(pos, {name = sapling_name})
 		if not minetest.setting_getbool("creative_mode") then
 			itemstack:take_item()
 		end
+		--[[
 	else
 		minetest.record_protection_violation(pos, player_name)
 		-- Print extra information to explain
 		minetest.chat_send_player(player_name, "Tree will intersect protection")
 	end
-
+]]
 	return itemstack
 
 end
