@@ -1,3 +1,18 @@
+JUST TEST TRIBUTE GAME
+
+Made for minetest 4.14-4.15
+Dedicated to Andrey "Lag01" for making the best anarchy survival server, the original @test@ / just test.
+This game is slightly more server safe with a few anti grief tools added.
+TNT to be used below -150 meters.
+ADMIN tnt to be converted into tnt by soulblock punch.
+Most code updated to 4.14 code.
+
+Created by: maikerumine 2016
+
+
+
+
+
 The main game for the Minetest game engine [minetest_game]
 ==========================================================
 
