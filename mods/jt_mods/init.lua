@@ -27,7 +27,7 @@ dofile(minetest.get_modpath("jt_mods").."/tools.lua")
 dofile(minetest.get_modpath("jt_mods").."/thaw.lua")
 
 --SERVER SIDE
-dofile(minetest.get_modpath("jt_mods").."/shutdown.lua")
+--dofile(minetest.get_modpath("jt_mods").."/shutdown.lua")
 dofile(minetest.get_modpath("jt_mods").."/antigrief.lua")
 
 

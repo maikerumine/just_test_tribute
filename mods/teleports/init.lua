@@ -184,6 +184,18 @@ minetest.register_abm({
 				local positions = teleports:find_nearby(pos, 10)
 				if #positions>0 then
 					local key = math.random(1, #positions)
+					local dir, dirmag;
+					local view = player:get_look_dir();
+					local dist, distmin; distmin = 99;
+					for i=1,#positions do -- find teleport closest to where player is looking
+						dir = {x=positions[i].pos.x-pos.x,y=positions[i].pos.y-pos.y,z=positions[i].pos.z-pos.z};
+						dirmag = math.sqrt(dir.x*dir.x+dir.y*dir.y+dir.z*dir.z); if dirmag == 0 then dirmag = 1 end
+						dir.x=dir.x/dirmag;dir.y=dir.y/dirmag;dir.z=dir.z/dirmag;
+						dir.x = view.x-dir.x;dir.y = view.y-dir.y;dir.z = view.z-dir.z;
+						dist = math.sqrt(dir.x*dir.x+dir.y*dir.y+dir.z*dir.z);
+						if dist<distmin then distmin = dist; key = i end
+					end
+			
                     local pos2 = positions[key].pos
                     teleports.lastplayername = player:get_player_name()
                     if math.random(1, 100) > 5 then

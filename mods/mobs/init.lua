@@ -117,7 +117,7 @@ mobs:register_mob("mobs:turkey", {
 	jump=true,
 
 })
-mobs:register_spawn("mobs:turkey", "default:dirt_with_grass", 20, 8, 19000, 2, 30, -100) --was48
+--mobs:register_spawn("mobs:turkey", "default:dirt_with_grass", 20, 8, 19000, 2, 30, -100) --was48
 
 
 
@@ -299,7 +299,7 @@ mobs:register_mob("mobs:just_test_griefer", {
 	run_velocity = 3,
 	damage = 2,
 	drops = {
-		{name = "default:iron_lump",
+		{name = "jt_mods:griefer_soul",
 		chance = 7,
 		min = 1,
 		max = 1,},
@@ -314,7 +314,7 @@ mobs:register_mob("mobs:just_test_griefer", {
 
 	},
 	bone_drops = {
-		{name = "default:iron_lump",
+		{name = "jt_mods:griefer_soul",
 		chance = 7,
 		min = 1,
 		max = 1,},

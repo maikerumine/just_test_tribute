@@ -353,11 +353,9 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = 'default:rail 24',
+	output = 'default:skeleton_key',
 	recipe = {
-		{'default:steel_ingot', '', 'default:steel_ingot'},
-		{'default:steel_ingot', 'group:stick', 'default:steel_ingot'},
-		{'default:steel_ingot', '', 'default:steel_ingot'},
+		{'default:gold_ingot'},
 	}
 })
 
@@ -790,6 +788,20 @@ minetest.register_craft({
 	recipe = "default:clay_lump",
 })
 
+minetest.register_craft({
+	type = 'cooking',
+	output = 'default:gold_ingot',
+	recipe = 'default:skeleton_key',
+	cooktime = 5,
+})
+
+minetest.register_craft({
+	type = 'cooking',
+	output = 'default:gold_ingot',
+	recipe = 'default:key',
+	cooktime = 5,
+})
+
 --
 -- Fuels
 --
@@ -1060,6 +1072,12 @@ minetest.register_craft({
 minetest.register_craft({
 	type = "fuel",
 	recipe = "default:book",
+	burntime = 3,
+})
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "default:book_written",
 	burntime = 3,
 })
 

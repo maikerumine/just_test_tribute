@@ -311,7 +311,7 @@ minetest.register_craft({
 	output = name,
 	recipe = {
 		{"group:wood", "group:wood"},
-		{"group:wood", "default:copper_ingot"},
+		{"group:wood", "default:mese_crystal"},
 		{"group:wood", "group:wood"}
 	}
 })
@@ -319,7 +319,7 @@ minetest.register_craft({
 minetest.register_craft({
 	output = name,
 	recipe = {
-		{"doors:door_wood", "default:copper_ingot"}
+		{"doors:door_wood", "default:mese_crystal"}
 	}
 })
 
@@ -344,7 +344,7 @@ minetest.register_craft({
 	output = name,
 	recipe = {
 		{"default:steel_ingot", "default:steel_ingot"},
-		{"default:steel_ingot", "default:copper_ingot"},
+		{"default:steel_ingot", "default:mese_crystal"},
 		{"default:steel_ingot", "default:steel_ingot"}
 	}
 })
@@ -352,7 +352,7 @@ minetest.register_craft({
 minetest.register_craft({
 	output = name,
 	recipe = {
-		{"doors:door_steel", "default:copper_ingot"}
+		{"doors:door_steel", "default:mese_crystal"}
 	}
 })
 

@@ -46,6 +46,21 @@ minetest.override_item("default:dirt_with_dry_grass", {
 })
 
 
+
+minetest.override_item("default:mossycobble", {
+	description = "Mossy Cobblestone",
+	tiles = {"default_snow.png"},
+	is_ground_content = false,
+	groups = {cracky = 3, stone = 2},
+	sounds = default.node_sound_dirt_defaults({
+		footstep = {name = "default_snow_footstep", gain = 0.15},
+		dug = {name = "default_snow_footstep", gain = 0.2},
+		dig = {name = "default_snow_footstep", gain = 0.2}
+	}),
+})
+
+
+--[[
 minetest.override_item("default:leaves", {
 	description = "Leaves",
 	--drawtype = "allfaces_optional",
@@ -167,7 +182,7 @@ minetest.override_item("default:aspen_leaves", {
 
 	after_place_node = default.after_place_leaves,
 })
-
+]]
 --
 -- Plantlife (non-cubic)
 --

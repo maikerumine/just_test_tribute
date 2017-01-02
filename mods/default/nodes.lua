@@ -159,8 +159,6 @@ default:lava_flowing
 Tools / "Advanced" crafting / Non-"natural"
 -------------------------------------------
 
-default:torch
-
 default:chest
 default:chest_locked
 
@@ -180,8 +178,6 @@ default:fence_aspen_wood
 
 default:glass
 default:obsidian_glass
-
-default:rail
 
 default:brick
 
@@ -467,7 +463,7 @@ minetest.register_node("default:snow", {
 minetest.register_node("default:snowblock", {
 	description = "Snow Block",
 	tiles = {"default_snow.png"},
-	groups = {crumbly = 3, puts_out_fire = 1},
+	groups = {crumbly = 3, puts_out_fire = 1, cools_lava = 1},
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_snow_footstep", gain = 0.15},
 		dug = {name = "default_snow_footstep", gain = 0.2},
@@ -487,7 +483,7 @@ minetest.register_node("default:ice", {
 	tiles = {"default_ice.png"},
 	is_ground_content = false,
 	paramtype = "light",
-	groups = {cracky = 3, puts_out_fire = 1},
+	groups = {cracky = 3, puts_out_fire = 1, cools_lava = 1},
 	sounds = default.node_sound_glass_defaults(),
 })
 
@@ -536,7 +532,7 @@ minetest.register_node("default:sapling", {
 	sounds = default.node_sound_leaves_defaults(),
 
 	on_construct = function(pos)
-		minetest.get_node_timer(pos):start(math.random(240,480))
+		minetest.get_node_timer(pos):start(math.random(1400,2800))
 	end,
 
 	on_place = function(itemstack, placer, pointed_thing)
@@ -672,7 +668,7 @@ minetest.register_node("default:junglesapling", {
 	sounds = default.node_sound_leaves_defaults(),
 
 	on_construct = function(pos)
-		minetest.get_node_timer(pos):start(math.random(240,480))
+		minetest.get_node_timer(pos):start(math.random(1400,2800))
 	end,
 
 	on_place = function(itemstack, placer, pointed_thing)
@@ -752,7 +748,7 @@ minetest.register_node("default:pine_sapling", {
 	sounds = default.node_sound_leaves_defaults(),
 
 	on_construct = function(pos)
-		minetest.get_node_timer(pos):start(math.random(240,480))
+		minetest.get_node_timer(pos):start(math.random(1400,2800))
 	end,
 
 	on_place = function(itemstack, placer, pointed_thing)
@@ -833,7 +829,7 @@ minetest.register_node("default:acacia_sapling", {
 	sounds = default.node_sound_leaves_defaults(),
 
 	on_construct = function(pos)
-		minetest.get_node_timer(pos):start(math.random(240,480))
+		minetest.get_node_timer(pos):start(math.random(1400,2800))
 	end,
 
 	on_place = function(itemstack, placer, pointed_thing)
@@ -912,7 +908,7 @@ minetest.register_node("default:aspen_sapling", {
 	sounds = default.node_sound_leaves_defaults(),
 
 	on_construct = function(pos)
-		minetest.get_node_timer(pos):start(math.random(240,480))
+		minetest.get_node_timer(pos):start(math.random(1400,2800))
 	end,
 
 	on_place = function(itemstack, placer, pointed_thing)
@@ -1052,7 +1048,7 @@ minetest.register_node("default:cactus", {
 	tiles = {"default_cactus_top.png", "default_cactus_top.png",
 		"default_cactus_side.png"},
 	paramtype2 = "facedir",
-	groups = {snappy = 1, choppy = 3},
+	groups = {choppy = 3},
 	sounds = default.node_sound_wood_defaults(),
 	on_place = minetest.rotate_node,
 })
@@ -1351,7 +1347,8 @@ minetest.register_node("default:water_source", {
 	liquid_alternative_source = "default:water_source",
 	liquid_viscosity = 1,
 	post_effect_color = {a = 103, r = 30, g = 60, b = 90},
-	groups = {water = 3, liquid = 3, puts_out_fire = 1},
+	groups = {water = 3, liquid = 3, puts_out_fire = 1, cools_lava = 1},
+	sounds = default.node_sound_water_defaults(),
 })
 
 minetest.register_node("default:water_flowing", {
@@ -1396,7 +1393,8 @@ minetest.register_node("default:water_flowing", {
 	liquid_viscosity = 1,
 	post_effect_color = {a = 103, r = 30, g = 60, b = 90},
 	groups = {water = 3, liquid = 3, puts_out_fire = 1,
-		not_in_creative_inventory = 1},
+		not_in_creative_inventory = 1, cools_lava = 1},
+	sounds = default.node_sound_water_defaults(),
 })
 
 
@@ -1442,7 +1440,8 @@ minetest.register_node("default:river_water_source", {
 	liquid_renewable = false,
 	liquid_range = 2,
 	post_effect_color = {a = 103, r = 30, g = 76, b = 90},
-	groups = {water = 3, liquid = 3, puts_out_fire = 1},
+	groups = {water = 3, liquid = 3, puts_out_fire = 1, cools_lava = 1},
+	sounds = default.node_sound_water_defaults(),
 })
 
 minetest.register_node("default:river_water_flowing", {
@@ -1489,7 +1488,8 @@ minetest.register_node("default:river_water_flowing", {
 	liquid_range = 2,
 	post_effect_color = {a = 103, r = 30, g = 76, b = 90},
 	groups = {water = 3, liquid = 3, puts_out_fire = 1,
-		not_in_creative_inventory = 1},
+		not_in_creative_inventory = 1, cools_lava = 1},
+	sounds = default.node_sound_water_defaults(),
 })
 
 
@@ -1590,58 +1590,6 @@ minetest.register_node("default:lava_flowing", {
 -- Tools / "Advanced" crafting / Non-"natural"
 --
 
-minetest.register_node("default:torch", {
-	description = "Torch",
-	drawtype = "torchlike",
-	tiles = {
-		{
-			name = "default_torch_on_floor_animated.png",
-			animation = {
-				type = "vertical_frames",
-				aspect_w = 16,
-				aspect_h = 16,
-				length = 3.0
-			},
-		},
-		{
-			name="default_torch_on_ceiling_animated.png",
-			animation = {
-				type = "vertical_frames",
-				aspect_w = 16,
-				aspect_h = 16,
-				length = 3.0
-			},
-		},
-		{
-			name="default_torch_animated.png",
-			animation = {
-				type = "vertical_frames",
-				aspect_w = 16,
-				aspect_h = 16,
-				length = 3.0
-			},
-		},
-	},
-	inventory_image = "default_torch_on_floor.png",
-	wield_image = "default_torch_on_floor.png",
-	paramtype = "light",
-	paramtype2 = "wallmounted",
-	sunlight_propagates = true,
-	is_ground_content = false,
-	walkable = false,
-	light_source = default.LIGHT_MAX - 1,
-	selection_box = {
-		type = "wallmounted",
-		wall_top = {-0.1, 0.5 - 0.6, -0.1, 0.1, 0.5, 0.1},
-		wall_bottom = {-0.1, -0.5, -0.1, 0.1, -0.5 + 0.6, 0.1},
-		wall_side = {-0.5, -0.3, -0.1, -0.5 + 0.3, 0.3, 0.1},
-	},
-	groups = {choppy = 2, dig_immediate = 3, flammable = 1, attached_node = 1},
-	legacy_wallmounted = true,
-	sounds = default.node_sound_defaults(),
-})
-
-
 local chest_formspec =
 	"size[8,9]" ..
 	default.gui_bg ..
@@ -1671,16 +1619,30 @@ local function get_locked_chest_formspec(pos)
 end
 
 local function has_locked_chest_privilege(meta, player)
-	local name = ""
 	if player then
 		if minetest.check_player_privs(player, "protection_bypass") then
 			return true
 		end
-		name = player:get_player_name()
-	end
-	if name ~= meta:get_string("owner") then
+	else
 		return false
 	end
+
+	-- is player wielding the right key?
+	local item = player:get_wielded_item()
+	if item:get_name() == "default:key" then
+		local key_meta = minetest.parse_json(item:get_metadata())
+		local secret = meta:get_string("key_lock_secret")
+		if secret ~= key_meta.secret then
+			return false
+		end
+
+		return true
+	end
+
+	if player:get_player_name() ~= meta:get_string("owner") then
+		return false
+	end
+
 	return true
 end
 
@@ -1800,6 +1762,41 @@ minetest.register_node("default:chest_locked", {
 		return itemstack
 	end,
 	on_blast = function() end,
+	on_key_use = function(pos, player)
+		local secret = minetest.get_meta(pos):get_string("key_lock_secret")
+		local itemstack = player:get_wielded_item()
+		local key_meta = minetest.parse_json(itemstack:get_metadata())
+
+		if secret ~= key_meta.secret then
+			return
+		end
+
+		minetest.show_formspec(
+			player:get_player_name(),
+			"default:chest_locked",
+			get_locked_chest_formspec(pos)
+		)
+	end,
+	on_skeleton_key_use = function(pos, player, newsecret)
+		local meta = minetest.get_meta(pos)
+		local owner = meta:get_string("owner")
+		local name = player:get_player_name()
+
+		-- verify placer is owner of lockable chest
+		if owner ~= name then
+			minetest.record_protection_violation(pos, name)
+			minetest.chat_send_player(name, "You do not own this chest.")
+			return nil
+		end
+
+		local secret = meta:get_string("key_lock_secret")
+		if secret == "" then
+			secret = newsecret
+			meta:set_string("key_lock_secret", secret)
+		end
+
+		return secret, "a locked chest", owner
+	end,
 })
 
 
@@ -1815,16 +1812,23 @@ local bookshelf_formspec =
 	"listring[current_player;main]" ..
 	default.get_hotbar_bg(0,2.85)
 
--- Inventory slots overlay
-local bx, by = 0, 0.3
-for i = 1, 16 do
-	if i == 9 then
-		bx = 0
-		by = by + 1
+local function get_bookshelf_formspec(inv)
+	local formspec = bookshelf_formspec
+	local invlist = inv and inv:get_list("books")
+	-- Inventory slots overlay
+	local bx, by = 0, 0.3
+	for i = 1, 16 do
+		if i == 9 then
+			bx = 0
+			by = by + 1
+		end
+		if not invlist or invlist[i]:is_empty() then
+			formspec = formspec ..
+				"image[" .. bx .. "," .. by .. ";1,1;default_bookshelf_slot.png]"
+		end
+		bx = bx + 1
 	end
-	bookshelf_formspec = bookshelf_formspec ..
-		"image[" .. bx .. "," .. by .. ";1,1;default_bookshelf_slot.png]"
-	bx = bx + 1
+	return formspec
 end
 
 minetest.register_node("default:bookshelf", {
@@ -1838,7 +1842,7 @@ minetest.register_node("default:bookshelf", {
 
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
-		meta:set_string("formspec", bookshelf_formspec)
+		meta:set_string("formspec", get_bookshelf_formspec(nil))
 		local inv = meta:get_inventory()
 		inv:set_size("books", 8 * 2)
 	end,
@@ -1855,14 +1859,20 @@ minetest.register_node("default:bookshelf", {
 	on_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
 		minetest.log("action", player:get_player_name() ..
 			" moves stuff in bookshelf at " .. minetest.pos_to_string(pos))
+		local meta = minetest.get_meta(pos)
+		meta:set_string("formspec", get_bookshelf_formspec(meta:get_inventory()))
 	end,
 	on_metadata_inventory_put = function(pos, listname, index, stack, player)
 		minetest.log("action", player:get_player_name() ..
 			" moves stuff to bookshelf at " .. minetest.pos_to_string(pos))
+		local meta = minetest.get_meta(pos)
+		meta:set_string("formspec", get_bookshelf_formspec(meta:get_inventory()))
 	end,
 	on_metadata_inventory_take = function(pos, listname, index, stack, player)
 		minetest.log("action", player:get_player_name() ..
 			" takes stuff from bookshelf at " .. minetest.pos_to_string(pos))
+		local meta = minetest.get_meta(pos)
+		meta:set_string("formspec", get_bookshelf_formspec(meta:get_inventory()))
 	end,
 	on_blast = function(pos)
 		local drops = {}
@@ -2042,27 +2052,6 @@ minetest.register_node("default:obsidian_glass", {
 	sunlight_propagates = true,
 	sounds = default.node_sound_glass_defaults(),
 	groups = {cracky = 3},
-})
-
-
-minetest.register_node("default:rail", {
-	description = "Rail",
-	drawtype = "raillike",
-	tiles = {"default_rail.png", "default_rail_curved.png",
-		"default_rail_t_junction.png", "default_rail_crossing.png"},
-	inventory_image = "default_rail.png",
-	wield_image = "default_rail.png",
-	paramtype = "light",
-	sunlight_propagates = true,
-	walkable = false,
-	is_ground_content = false,
-	selection_box = {
-		type = "fixed",
-                -- but how to specify the dimensions for curved and sideways rails?
-                fixed = {-1/2, -1/2, -1/2, 1/2, -1/2+1/16, 1/2},
-	},
-	groups = {dig_immediate = 2, attached_node = 1,
-		connect_to_raillike = minetest.raillike_group("rail")},
 })
 
 

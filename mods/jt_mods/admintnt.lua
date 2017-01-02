@@ -73,7 +73,7 @@ minetest.register_node("jt_mods:admin_tnt_fast", {
 	description = "ADMIN TNT  Changes to tnt after 60 second hour timer",
 	paramtype2 = "facedir",
 	place_param2 = 0,
-	tiles = {"admin_tnt_top.png^heart.png", "admin_tnt_bottom.png^default_mineral_copper.png^heart.png", "admin_tnt_side.png^default_rail.png"},
+	tiles = {"admin_tnt_top.png^heart.png", "admin_tnt_bottom.png^default_mineral_copper.png^heart.png", "admin_tnt_side.png^carts_rail_straight.png"},
 	is_ground_content = false,
 	groups = {cracky = 0},
 	sounds = default.node_sound_wood_defaults(),

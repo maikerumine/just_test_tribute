@@ -177,6 +177,8 @@ Gambit (CC BY-SA 3.0):
   default_snow.png
   default_snow_side.png
   default_snowball.png
+  default_key.png
+  default_key_skeleton.png
 
 asl97 (CC BY-SA 3.0):
   default_ice.png
@@ -247,3 +249,16 @@ Metal sounds:
   default_place_node_metal.*.ogg - Ogrebane - CC0
   - http://opengameart.org/content/wood-and-metal-sound-effects-volume-2
 
+Tool breaking sounds added by sofar: CC-BY-3.0
+  default_tool_breaks.* - http://www.freesound.org/people/HerbertBoland/sounds/33206/
+
+AGFX (CC BY 3.0)
+https://www.freesound.org/people/AGFX/packs/1253/
+  default_water_footstep.1.ogg
+  default_water_footstep.2.ogg
+  default_water_footstep.3.ogg
+(default_water_footstep.4.ogg is silent)
+
+blukotek (CC0 1.0)
+https://www.freesound.org/people/blukotek/sounds/251660/
+  default_dig_snappy.ogg
