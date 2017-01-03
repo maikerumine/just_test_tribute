@@ -56,8 +56,8 @@ function default.register_ores()
 		wherein         = {"default:sand"},
 		clust_scarcity  = 16 * 16 * 16,
 		clust_size      = 5,
-		y_min           = -15,
-		y_max           = 0,
+		y_min           = -31,
+		y_max           = -310,
 		noise_threshold = 0.0,
 		noise_params    = {
 			offset = 0.5,
@@ -79,7 +79,7 @@ function default.register_ores()
 		clust_scarcity  = 16 * 16 * 16,
 		clust_size      = 5,
 		y_min           = -31,
-		y_max           = 0,
+		y_max           = -310,
 		noise_threshold = 0.0,
 		noise_params    = {
 			offset = 0.5,
@@ -122,8 +122,8 @@ function default.register_ores()
 		wherein         = {"default:stone"},
 		clust_scarcity  = 16 * 16 * 16,
 		clust_size      = 5,
-		y_min           = -31000,
-		y_max           = 31000,
+		y_min           = -31,
+		y_max           = -310,
 		noise_threshold = 0.0,
 		noise_params    = {
 			offset = 0.5,
